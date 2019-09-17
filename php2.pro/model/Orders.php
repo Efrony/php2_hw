@@ -1,10 +1,8 @@
 <?php
 
-
 namespace app\model;
-use app\engine\Db;
 
-class Orders extends Model
+class Orders extends DbModel
 {
     public $id;
     public $status = 'Не подтверждён';
@@ -17,15 +15,14 @@ class Orders extends Model
     public $summ;
 
     public function __construct(
-        $email,
-        $address,
+        $email = null,
+        $address = null,
         $phone,
         $id_session,
         $id_product,
-        $name,
-        $summ
+        $name = null,
+        $summ = null
     ) {
-        parent::__construct(new Db);
         $this->email = $email;
         $this->address = $address;
         $this->phone = $phone;
@@ -34,7 +31,7 @@ class Orders extends Model
         $this->name = $name;
         $this->summ = $summ;
     }
-    public function getNameTable()
+    public static function getNameTable()
     {
         return 'orders';
     }

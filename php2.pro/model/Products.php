@@ -1,38 +1,37 @@
 <?php
 
 namespace app\model;
-use app\engine\Db;
 
-abstract class Products extends Model {
+class Products extends DbModel
+{
     public $id;
     public $name;
+    public $rating;
+    public $color;
     public $discription;
     public $price;
-    public $brand;
-    protected static $summ = 0;
+    public $img_id;
 
-    public function __construct(int $id, string $name, array $discription, int $price, string $brand)
-    {   
-        parent::__construct(new Db);
+    public function __construct(
+        $id = null,
+        $name = null,
+        $rating = null,
+        $color = null,
+        $discription = null,
+        $price = null,
+        $img_id = null
+    ) {
         $this->id = $id;
         $this->name = $name;
+        $this->rating = $rating;
+        $this->color = $color;
         $this->discription = $discription;
         $this->price = $price;
-        $this->brand = $brand;
-        $this->summ = 0;
+        $this->img_id = $img_id;
     }
 
-    public function getSummPrice()
+    public static function getNameTable()
     {
-        return self::$summ;
+        return 'product';
     }
-
-    public function getNameTable()
-    {
-        return 'products';
-    }
-
-
 }
-
-

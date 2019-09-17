@@ -1,10 +1,8 @@
 <?php
 
-
 namespace app\model;
-use app\engine\Db;
 
-class Users extends Model
+class Users extends DbModel
 {
     public $name;
     public $email;
@@ -17,17 +15,14 @@ class Users extends Model
         $password = null,
         $phone = null
     ) {
-        parent::__construct(new Db);
         $this->name = $name;
         $this->email = $email;
         $this->password = $password;
         $this->phone = $phone;
     }
 
-    public function getNameTable()
+    public static function getNameTable()
     {
         return 'users';
     }
-
-
 }
