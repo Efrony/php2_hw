@@ -24,37 +24,12 @@ abstract class DbModel extends Model
         return Db::getInstance()->queryAll($sql);
     }
 
-    public static function getColumnWhere($column, $condition, $point) {
-        $tableName = static::getNameTable();
-        $sql = "SELECT {$column} FROM {$tableName} WHERE {$condition} = :point";
-        return Db::getInstance()->queryColumn($sql, ['point' => $point]);
-    }
 
     public static function getLimit(int $from, int $to)
     {
         $tableName = static::getNameTable();
         $sql = "SELECT * FROM {$tableName} ORDER BY `rating` DESC LIMIT {$from}, {$to}";
         return Db::getInstance()->queryAll($sql);
-    }
-
-
-    public static function getWhere($condition, $point)
-    {
-        $tableName = static::getNameTable();
-        $sql = "SELECT * FROM {$tableName}  WHERE {$condition} = :point";
-        $data = Db::getInstance()->queryAll($sql, ['point' => $point]);
-        if (count($data) == 1) {
-            return $data[0];
-        }
-        return $data;
-    }
-
-    public static function getArrayWhere($condition, $point)
-    {
-        $tableName = static::getNameTable();
-        $sql = "SELECT * FROM {$tableName}  WHERE {$condition} = :point";
-        $data = Db::getInstance()->queryAll($sql, ['point' => $point]);
-        return $data;
     }
 
     public static function getObjectWhere($condition, $point)
@@ -64,6 +39,7 @@ abstract class DbModel extends Model
         $data = Db::getInstance()->queryObject($sql, ['point'=> $point], static::class);
         return $data;
     }
+
 
 
     public function insert()
@@ -96,7 +72,7 @@ abstract class DbModel extends Model
             $string .= "`{$key}` = :{$key}, ";
             $params[$key] = $value;
         }
-        $string = substr($string, 0, -2);
+        $string = substr($string, 0, -2); // убираем в конце пробел и запятую
         $tableName = static::getNameTable();
         $sql = "UPDATE {$tableName} SET {$string} WHERE (`id` = :id);";
         $params['id'] = $this->id;
@@ -104,10 +80,10 @@ abstract class DbModel extends Model
         return Db::getInstance()->executeQuery($sql, $params);
     }
 
-    public function delete($id)
+    public function delete()
     {
         $tableName = static::getNameTable();
         $sql = "DELETE FROM {$tableName} WHERE id = :id";
-        return Db::getInstance()->executeQuery($sql, ['id' => $id]);
+        return Db::getInstance()->executeQuery($sql, ['id' => $this->id]);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace app\model;
 
-class Products extends DbModel
+class Product extends DbModel
 {
     public $id;
     public $name;

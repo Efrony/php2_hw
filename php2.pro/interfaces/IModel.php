@@ -16,5 +16,5 @@ interface IModel
 
     public function update();
 
-    public function delete($id);
+    public function delete();
 }

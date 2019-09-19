@@ -17,9 +17,9 @@ class Orders extends DbModel
     public function __construct(
         $email = null,
         $address = null,
-        $phone,
-        $id_session,
-        $id_product,
+        $phone= null,
+        $id_session= null,
+        $id_product= null,
         $name = null,
         $summ = null
     ) {

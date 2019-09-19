@@ -23,6 +23,7 @@ class Db
         ]
     ];
 
+
     private function getDSN()
     {
         $driver = $this->config['driver'];
@@ -32,6 +33,7 @@ class Db
         $dsn = "$driver:host=$host;dbname=$db;charset=$charset";
         return $dsn;
     }
+
 
     private function getConnection()
     {
@@ -46,6 +48,7 @@ class Db
         return $this->connection;
     }
 
+
     private function query($sql, $params)
     {
         $stmt = $this->getConnection()->prepare($sql);
@@ -53,21 +56,25 @@ class Db
         return $stmt;
     }
 
+
     public function executeQuery($sql, $params = [])
     {
         $this->query($sql, $params);
         return true;
     }
 
+
     public function queryAll($sql, $params = [])
     {
         return $this->query($sql, $params)->fetchAll();
     }
 
+
     public function queryOne($sql, $params = [])
     {
         return $this->queryAll($sql, $params)[0];
     }
+
 
     public function queryObject($sql, $params, $class)
     {
@@ -76,10 +83,12 @@ class Db
         return $stmt->fetch();
     }
 
+
     public function queryColumn($sql, $params)
     {
         return $this->query($sql, $params)->fetchAll(\PDO::FETCH_COLUMN);
     }
+    
     
     public function lastInsertId() {
         return $this->connection->lastInsertId();
