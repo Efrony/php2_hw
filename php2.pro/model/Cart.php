@@ -5,9 +5,9 @@ namespace app\model;
 
 class Cart extends DbModel
 {
-    public $id;
-    public $id_session;
-    public $id_product;
+    protected $id;
+    protected $id_session;
+    protected $id_product;
 
     public function __construct($id_session = null, $id_product = null)
     {

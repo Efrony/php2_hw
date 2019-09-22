@@ -4,15 +4,15 @@ namespace app\model;
 
 class Orders extends DbModel
 {
-    public $id;
-    public $status = 'Не подтверждён';
-    public $email;
-    public $address;
-    public $phone;
-    public $id_session;
-    public $id_product;
-    public $name;
-    public $summ;
+    protected $id;
+    protected $status = 'Не подтверждён';
+    protected $email;
+    protected $address;
+    protected $phone;
+    protected $id_session;
+    protected $id_product;
+    protected $name;
+    protected $summ;
 
     public function __construct(
         $email = null,

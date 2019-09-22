@@ -4,10 +4,10 @@ namespace app\model;
 
 class Users extends DbModel
 {
-    public $name;
-    public $email;
-    public $password;
-    public $phone;
+    protected $name;
+    protected $email;
+    protected $password;
+    protected $phone;
 
     public function __construct(
         $name = null,

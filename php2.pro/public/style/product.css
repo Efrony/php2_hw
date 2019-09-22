@@ -1,0 +1,220 @@
+.product_page {
+  position: relative;
+  margin: 0 auto;
+}
+.product_page .bcgBlock {
+  position: absolute;
+  height: 777px;
+  width: 100%;
+  background-color: #f7f7f7;
+  z-index: -1;
+}
+.product_page .content {
+  width: 1142px;
+  margin: 0 auto;
+}
+@media (max-width: 1142px) {
+  .product_page .content {
+    width: auto;
+  }
+}
+.product_page .content .contentBcg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.product_page .content .contentBcg aside {
+  background: #fff;
+  border: 1px solid #eaeaea;
+}
+.product_page .content .contentBcg img[alt="fotoProduct"] {
+  max-height: 724px;
+}
+@media (max-width: 1142px) {
+  .product_page .content .contentBcg img[alt="fotoProduct"] {
+    width: 100%;
+  }
+}
+aside {
+  padding: 70px 250px 122px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media (max-width: 1142px) {
+  aside {
+    padding: 10px;
+  }
+}
+aside .collection {
+  color: #f16d7f;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 24px;
+  text-transform: uppercase;
+}
+aside img {
+  margin: 16px;
+}
+aside .heading {
+  color: #4d4d4d;
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 24px;
+  text-transform: uppercase;
+}
+aside .discr {
+  padding: 57px 0 25px;
+  color: #5e5e5e;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+}
+aside .material {
+  color: #2f2f2f;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 24px;
+  text-transform: uppercase;
+}
+aside .material span {
+  color: #b9b9b9;
+}
+aside .price {
+  color: #ef5b70;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 24px;
+  padding: 28px 0 40px;
+}
+aside form {
+  border-top: 1px solid #eaeaea;
+  width: 100%;
+  padding: 9.5% 7.5% 0 7.5%;
+}
+aside form .characteristic {
+  display: flex;
+  justify-content: space-between;
+}
+aside form .characteristic div {
+  width: 26%;
+  color: #2f2f2f;
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 24px;
+  text-transform: uppercase;
+}
+aside form .characteristic select,
+aside form .characteristic input {
+  width: 100%;
+  border: 1px solid #eaeaea;
+  color: #bcbcbc;
+  font-size: 13px;
+  font-weight: 400;
+  padding: 10px 15px;
+  margin: 11px 0 27px 0;
+}
+aside form .characteristic select option[disabled],
+aside form .characteristic input option[disabled] {
+  color: #efefef;
+}
+aside form .characteristic .color select {
+  padding-left: 30px;
+  background: url(../img/hot_deals/red_color.jpg) no-repeat 13px 12px;
+}
+aside form .addToCart {
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #ef5b70;
+  color: #ef5b70;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+aside form .addToCart:before {
+  content: url(../img/hot_deals/cart_1.jpg);
+}
+.likeAlso {
+  padding: 115px 0 70px;
+  text-align: center;
+  color: #4d4d4d;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 20px;
+  text-transform: uppercase;
+}
+.product {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+.product a {
+  text-decoration: none;
+  margin-bottom: 39px;
+  width: 23%;
+}
+.product a:hover {
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.16);
+}
+.product figure {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  text-align: center;
+}
+.product figure img {
+  height: 280px;
+  margin: 0 auto;
+}
+.product figcaption {
+  color: #222222;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 15px 13px 20px;
+  max-width: 261px;
+  overflow: hidden;
+}
+.product figcaption p {
+  color: #f16d7f;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding-top: 13px;
+}
+.product .shadowHover {
+  position: absolute;
+  top: 0;
+  background-image: url(../img/Background.png);
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  display: none;
+  justify-content: center;
+  overflow: hidden;
+}
+.product .shadowHover .addToCart {
+  border: 1px solid #fff;
+  position: absolute;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: stretch;
+  margin-top: 98px;
+  padding: 10px 10px 10px 10px;
+  background: rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+.product .shadowHover .addToCart:before {
+  content: url(../img/product/Forma_1_copy.png);
+}
+.product a:hover .shadowHover {
+  display: flex;
+}

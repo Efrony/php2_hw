@@ -4,13 +4,13 @@ namespace app\model;
 
 class Product extends DbModel
 {
-    public $id;
-    public $name;
-    public $rating;
-    public $color;
-    public $discription;
-    public $price;
-    public $img_id;
+    protected $id;
+    protected $name;
+    protected $rating;
+    protected $color;
+    protected $discription;
+    protected $price;
+    protected $img_id;
 
     public function __construct(
         $id = null,

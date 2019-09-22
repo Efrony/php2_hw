@@ -1,0 +1,277 @@
+.subscribeBcg {
+    margin-top: 91px;
+    background: url(../img/foter_bcg.jpg) no-repeat center;
+    height: 438px;
+
+    /*background-blend-mode: overlay;*/
+    .subscribe {
+        margin: 0 auto;
+        width: 1142px;
+        display: flex;
+
+        .emailBlock,
+        .commentBlock {
+            width: 50%;
+            display: flex;
+            position: relative;
+        }
+    }
+
+    .comment {
+        background: url(../img/foto_comment.png) no-repeat;
+        padding: 0 70px 0 111px;
+        color: #222224;
+        font-size: 16px;
+        font-style: italic;
+        line-height: 26px;
+        letter-spacing: 0.4px;
+        position: absolute;
+        top: 110px;
+
+        address {
+            color: #f16d7f;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+            line-height: 26px;
+            font-style: normal;
+
+            p {
+                color: #222224;
+                font-size: 12px;
+                font-weight: 300;
+                letter-spacing: 0.3px;
+                line-height: 14px;
+            }
+        }
+
+        .scroll {
+            width: 140px;
+            height: 4px;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+
+            a {
+                display: block;
+                width: 38px;
+                background-color: #d6d6d6;
+            }
+
+            a:hover {
+                background-color: #f16d7f;
+            }
+        }
+    }
+
+    .line {
+        width: 1px;
+        height: 438px;
+        background-color: #ffffff;
+    }
+
+    .email {
+        text-align: center;
+        color: #222224;
+        font-weight: 400;
+        font-size: 24px !important;
+        letter-spacing: 0.6px;
+        text-transform: uppercase;
+        position: absolute;
+        top: 145px;
+        left: 90px;
+
+        p {
+            letter-spacing: 0.35px;
+            font-size: 14px;
+            line-height: 24px;
+            margin-bottom: 33px;
+        }
+
+        input[type='email'] {
+            height: 46px;
+            width: 282px;
+            border-top-left-radius: 23px;
+            border-bottom-left-radius: 23px;
+            background-color: #e1e1e1;
+            border: none;
+            padding: 0 25px 0 25px;
+            float: left;
+        }
+
+        input[type='submit'] {
+            border-top-right-radius: 23px;
+            border-bottom-right-radius: 23px;
+            background-color: #f16d7f;
+            border: none;
+            padding: 0 25px 0 25px;
+            height: 46px;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 0.35px;
+        }
+    }
+}
+
+@media (max-width: 1142px) {
+    .subscribeBcg {
+        background-position: left;
+
+        .subscribe {
+            width: auto;
+        }
+    }
+}
+
+@media (max-width: 990px) {
+    .subscribeBcg {
+        .subscribe {
+            width: auto;
+            flex-direction: column-reverse;
+            align-items: center;
+
+            .emailBlock,
+            .commentBlock {
+                width: 100%;
+                justify-content: center;
+                margin-top: 5%;
+            }
+        }
+
+        .comment,
+        .email {
+            position: static;
+            padding-right: 0;
+        }
+
+        .email {
+            input[type='email'] {
+                width: auto;
+            }
+        }
+    }
+
+    .line {
+        display: none;
+    }
+}
+
+.footer {
+    padding: 109px 0 87px 0;
+    margin: 0 auto;
+    width: 1142px;
+    color: #898989;
+    display: flex;
+
+    .aboutBrand {
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 24px;
+        letter-spacing: 0.35px;
+        width: 427px;
+    }
+
+    .aboutAll {
+        padding-top: 12px;
+        flex-grow: 1;
+        display: flex;
+        justify-content: space-around;
+
+        ul {
+            list-style-type: none;
+
+            a {
+                text-decoration: none;
+                color: #898989;
+                font-size: 16px;
+                font-weight: 400;
+                letter-spacing: 0.4px;
+                line-height: 42px;
+            }
+        }
+
+        h4 {
+            color: #f16d7f;
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 26px;
+            letter-spacing: 0.45px;
+        }
+    }
+}
+
+@media (max-width: 1142px) {
+    .footer {
+        width: auto;
+        padding-left: 15px;
+    }
+}
+
+@media (max-width: 900px) {
+    .footer {
+        flex-direction: column;
+        padding: 15px;
+
+        .aboutBrand {
+            width: auto;
+        }
+
+        .aboutAll {
+            h4 {
+                letter-spacing: 0;
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+.copySocialBlock {
+    background-color: #e6e6e6;
+}
+
+.copySocial {
+    width: 1142px;
+    margin: 0 auto;
+    padding: 24px 0 24px 0;
+    display: flex;
+    justify-content: space-between;
+
+    .copy {
+        color: #7a7a7a;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 42px;
+        letter-spacing: 0.4px;
+    }
+
+    .social {
+        width: 191px;
+        display: flex;
+        justify-content: space-between;
+
+        div {
+            width: 32px;
+            height: 32px;
+            background-color: #ffffff;
+            text-align: center;
+            color: #b2b2b2;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 32px;
+            letter-spacing: 0.4px;
+        }
+
+        div:hover {
+            background-color: #f16d7f;
+            color: #fff;
+        }
+    }
+}
+
+@media (max-width: 1142px) {
+    .copySocial {
+        width: auto;
+        padding: 15px;
+    }
+}

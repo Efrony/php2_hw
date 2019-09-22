@@ -32,11 +32,24 @@ abstract class DbModel extends Model
         return Db::getInstance()->queryAll($sql);
     }
 
+
     public static function getObjectWhere($condition, $point)
     {
         $tableName = static::getNameTable();
         $sql = "SELECT * FROM {$tableName}  WHERE {$condition} = :point";
         $data = Db::getInstance()->queryObject($sql, ['point'=> $point], static::class);
+        return $data;
+    }
+
+
+    public static function getWhere($condition, $point)
+    {
+        $tableName = static::getNameTable();
+        $sql = "SELECT * FROM {$tableName}  WHERE {$condition} = :point";
+        $data = Db::getInstance()->queryAll($sql, ['point' => $point]);
+        /* if (count($data) == 1) {
+            return $data[0];
+        }*/
         return $data;
     }
 
@@ -48,7 +61,7 @@ abstract class DbModel extends Model
         $columns = [];
 
         foreach ($this as $key=>$value) {
-            if ($key == 'id') continue;
+            if ($key == 'id' || $key == 'changedProperties') continue;
             $params[":{$key}"] = $value;
             $columns[] = "`$key`";
         }
@@ -62,28 +75,41 @@ abstract class DbModel extends Model
         $this->id = Db::getInstance()->lastInsertId();
     }
 
+
     public function update()
     {   
         $string = '';
         $params = [];
 
         foreach ($this as $key=>$value) {
-            if ($key == 'id') continue;
-            $string .= "`{$key}` = :{$key}, ";
-            $params[$key] = $value;
+            if (in_array($key, $this->changedProperties)) {
+                $string .= "`{$key}` = :{$key}, ";
+                $params[$key] = $value;
+            }
         }
         $string = substr($string, 0, -2); // убираем в конце пробел и запятую
         $tableName = static::getNameTable();
         $sql = "UPDATE {$tableName} SET {$string} WHERE (`id` = :id);";
         $params['id'] = $this->id;
+        $this->changedProperties = [];
 
         return Db::getInstance()->executeQuery($sql, $params);
     }
+
 
     public function delete()
     {
         $tableName = static::getNameTable();
         $sql = "DELETE FROM {$tableName} WHERE id = :id";
         return Db::getInstance()->executeQuery($sql, ['id' => $this->id]);
+    }
+
+
+    public function save() {
+        if (is_null($this->id)){
+            $this->insert();
+        } else {
+            $this->update();
+        }
     }
 }
