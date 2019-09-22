@@ -6,6 +6,8 @@ use app\model\Product;
 
 class ApiController extends Controller
 {
+    public function actionDefault() {}
+
     public function actionShowmore()
     {
         $data = json_decode(file_get_contents('php://input'));
