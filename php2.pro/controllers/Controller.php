@@ -2,12 +2,20 @@
 
 namespace app\controllers;
 
+use app\interfaces\IRender;
+
 abstract class Controller
 {
     private $action;
     private $defaultAction = 'default';
     private $layout = 'main';
     private $useLayout = true;
+    private $renderer;
+
+    public function __construct(IRender $render)
+    {
+       $this->renderer = $render; 
+    }
 
     abstract public function actionDefault();
 
@@ -44,16 +52,11 @@ abstract class Controller
         }
     }
 
+
     public function renderTemplates($template, $params = [])
     {
-        extract($params);
-        $filename = TEMPLATES_DIR . "{$template}.php";
-        ob_start();
-        if (file_exists($filename)) {
-            include $filename;
-        } else {
-            echo "no template: {$filename}";
-        }
-        return ob_get_clean();
+        return $this->renderer->renderTemplates($template, $params);
     }
+
+
 }
