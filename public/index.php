@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 use app\engine\Render;
 use app\engine\TwigRender;
@@ -20,7 +21,7 @@ $actionName = $url_array[2];
 
 $controllerClass = CONTROLLER_NAMESPACE . ucfirst($controllerName) . "Controller";
 if (class_exists($controllerClass)) {
-    $controller = new $controllerClass(new TwigRender);
+    $controller = new $controllerClass(new Render);
     $controller->runAction($actionName);
 } else {
     echo "no controller {$controllerClass}";

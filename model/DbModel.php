@@ -47,9 +47,14 @@ abstract class DbModel extends Model
         $tableName = static::getNameTable();
         $sql = "SELECT * FROM {$tableName}  WHERE {$condition} = :point";
         $data = Db::getInstance()->queryAll($sql, ['point' => $point]);
-        /* if (count($data) == 1) {
-            return $data[0];
-        }*/
+        return $data;
+    }
+
+    public static function getOneWhere($condition, $point)
+    {
+        $tableName = static::getNameTable();
+        $sql = "SELECT * FROM {$tableName}  WHERE {$condition} = :point";
+        $data = Db::getInstance()->queryOne($sql, ['point' => $point]);
         return $data;
     }
 

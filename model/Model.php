@@ -7,6 +7,7 @@ use app\interfaces\IModel;
 
 abstract class Model implements IModel
 {
+    protected $id;
     protected $changedProperties = [];
 
     public function __get($property)
@@ -19,6 +20,7 @@ abstract class Model implements IModel
     public function __set($property, $value)
     {
         if (property_exists($this, $property) && $property !== 'id') {
+
                 $this->$property = $value;
                 $this->changedProperties[] = $property;
         }

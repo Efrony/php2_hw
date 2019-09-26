@@ -3,6 +3,8 @@
 namespace app\controllers;
 
 use app\interfaces\IRender;
+use app\model\Users;
+
 
 abstract class Controller
 {
@@ -36,13 +38,11 @@ abstract class Controller
             $layout = $this->layout;
             $inLayout = $this->renderTemplates(LAYOUTS_DIR . $layout, [
                 'header' => $this->renderTemplates('header', [
-                    'myEmail' => 'admin1@admin1.ru',
-                    'isAuth' => true,
+                    'isAuth' => Users::isAuth(),
+                    'myEmail' => Users::getUser(),
                     'countCart' => 0,
                 ]),
-                'menu' => $this->renderTemplates('menu', [
-                    'myEmail' => 'admin1@admin1.ru',
-                ]),
+                'menu' => $this->renderTemplates('menu', ['myEmail' => Users::getUser()]),
                 'content' => $this->renderTemplates($template, $paramsContent),
                 'footer' => $this->renderTemplates('footer'),
             ]);
