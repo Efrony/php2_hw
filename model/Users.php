@@ -38,7 +38,7 @@ class Users extends DbModel
     public static function isAuth() //проверка авторизации 
     {
         if (isset($_COOKIE['hash'])) {
-            $hash = $_COOKIE['hash'];
+            $hash = $_COOKIE['hash'];  
             $row = Users::getOneWhere('hash', $hash);
             $user = $row['email'];
             if (!empty($user)) {

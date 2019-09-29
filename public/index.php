@@ -4,8 +4,6 @@ session_start();
 use app\engine\Render;
 use app\engine\Request;
 use app\engine\TwigRender;
-use app\model\Cart;
-
 
 
 include $_SERVER['DOCUMENT_ROOT'] . "/../config/config.php";
