@@ -50,6 +50,7 @@ abstract class DbModel extends Model
         return $data;
     }
 
+    
     public static function getOneWhere($condition, $point)
     {
         $tableName = static::getNameTable();
@@ -58,6 +59,11 @@ abstract class DbModel extends Model
         return $data;
     }
 
+    public static function getColumnWhere($column, $condition, $point) {
+        $tableName = static::getNameTable();
+        $sql = "SELECT {$column} FROM {$tableName} WHERE {$condition} = :point";
+        return Db::getInstance()->queryColumn($sql, ['point' => $point]);
+    }
 
 
     public function insert()

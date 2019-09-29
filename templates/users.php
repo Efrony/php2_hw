@@ -36,6 +36,7 @@
                 <h5>sign in</h5>
                 <p class="point">Already registed?</p>
                 <p class="about">Please log in below</p>
+                <p><span class="red">!!! ДЛЯ ПРОВЕРКИ admin@admin.com  пароль 123 !!!</span></p>
                 <p class="point inp"> EMAIL ADDRESS <span class="red">*</span></p>
                 <input type="email" name="login" required value="<?=$_POST['login']?>" placeholder="admin@admin.com">
                 <p class="point inp"> PASSWORD <span class="red">*</span></p>

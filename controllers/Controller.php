@@ -4,27 +4,30 @@ namespace app\controllers;
 
 use app\interfaces\IRender;
 use app\model\Users;
+use app\engine\Request;
+use app\model\Cart;
 
 
 abstract class Controller
 {
-    private $action;
-    private $defaultAction = 'default';
     private $layout = 'main';
     private $useLayout = true;
     private $renderer;
+    protected $request;
+    protected $session;
 
     public function __construct(IRender $render)
     {
-       $this->renderer = $render; 
+       $this->renderer = $render;
+       $this->request = new Request;  
+       $this->session = session_id();
     }
 
     abstract public function actionDefault();
 
-    public function runAction($action = null)
+    public function runAction($action)
     {
-        $this->action = $action ?: $this->defaultAction;
-        $method = "action" . ucfirst($this->action);
+        $method = "action" . ucfirst($action);
         if (method_exists($this, $method)) {
             $this->$method();
         } else {
@@ -40,7 +43,7 @@ abstract class Controller
                 'header' => $this->renderTemplates('header', [
                     'isAuth' => Users::isAuth(),
                     'myEmail' => Users::getUser(),
-                    'countCart' => 0,
+                    'countCart' => Cart::countCart(),
                 ]),
                 'menu' => $this->renderTemplates('menu', ['myEmail' => Users::getUser()]),
                 'content' => $this->renderTemplates($template, $paramsContent),

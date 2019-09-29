@@ -18,7 +18,7 @@ class CatalogController extends Controller
 
     public function actionProduct()
     {
-        $id = $_GET['id'];
+        $id = $this->request->otherParams['id'];
         $productItem = Product::getOne($id);
         $productItem->rating++;
         $productItem->save();

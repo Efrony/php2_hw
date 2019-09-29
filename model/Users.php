@@ -15,12 +15,15 @@ class Users extends DbModel
         $name = null,
         $email = null,
         $password = null,
-        $phone = null
+        $phone = null,
+        $id_cart_session = null
+
     ) {
         $this->name = $name;
         $this->email = $email;
         $this->password = $password;
         $this->phone = $phone;
+        $this->id_cart_session = $id_cart_session;
     }
 
     public static function getNameTable()
