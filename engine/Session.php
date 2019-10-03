@@ -13,19 +13,26 @@ class Session
     }
 
     
-    public function __get($property)
+    public function getSession()
     {
-        if (property_exists($this, $property)) {
-            return $this->$property;
-        }
+        return $this->session;
     }
 
-
-    private function explodeUri() {
-        $this->method = $_SERVER['REQUEST_METHOD'];
-        $paramsUri = explode('/', $this->url);
-        $this->controllerName = $paramsUri[1];
-        $this->actionName = $paramsUri[2];
-        $this->otherParams = $_REQUEST;
+    public function newSession($newSessionID = null)
+    {
+        session_id($newSessionID);
+        return session_start();
     }
+
+    public function destroySession()
+    {
+        setcookie("PHPSESSID", null, time() - 1, '/');
+        return session_destroy();
+    }
+
+    public function setCookie($name, $value, $time, $path)
+    {
+        return setcookie($name, $value, $time, $path);
+    }
+
 }

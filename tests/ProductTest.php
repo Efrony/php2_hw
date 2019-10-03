@@ -2,15 +2,20 @@
 
 namespace app\tests;
 
-use app\model\Model;
+use app\model\Product;
 use PHPUnit\Framework\TestCase;
 
 class ProductTest extends TestCase
 {
 
-    public function testProduct() {
-        $this->assertEquals(strpos(Model::class, "app\\"), 0);
+    public function testProductName() {
+        $this->assertEquals(strpos(Product::class, "app\\"), 0);
+    }
+
+    public function testProductTableName() {
+        $this->assertEquals((new Product)->getNameTable(), 'product');
     }
 
 }   
+ 
 

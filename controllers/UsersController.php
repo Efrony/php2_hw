@@ -14,9 +14,9 @@ class UsersController extends Controller
     }
     public function actionLogin()  // после нажатия кнопки логин
     {
-        $login = $this->request->otherParams['login'];
-        $pass = $this->request->otherParams['password'];
-        $rememberMe = $this->request->otherParams['remember'];
+        $login = $this->request->params['login'];
+        $pass = $this->request->params['password'];
+        $rememberMe = $this->request->params['remember'];
 
         if (!Users::isCompliance($login, $pass)) {  // если не соответствует логин и пароль
             $message = 'Не верный логин или пароль';
@@ -27,8 +27,8 @@ class UsersController extends Controller
                 $hash = uniqid(rand(), true);  // генерировать случайный хэш
                 $user = Users::getObjectWhere('email', $login);
                 $user->hash = $hash;
-                $user->update(); // записать новый хэш в бд
-                setcookie("hash", $hash, time() + 36000, '/');  //  установить куки
+                $user->update(); 
+                $this->sessionObj->setCookie("hash", $hash, time() + 36000, '/');
             }
 
             $id_cart_session = $user->id_cart_session;
@@ -36,9 +36,8 @@ class UsersController extends Controller
                 $user->id_cart_session = $this->session;
                 $user->update();
             } else {
-               session_destroy();
-               session_id($id_cart_session);
-               session_start();       
+               $this->sessionObj->destroySession();
+               $this->sessionObj->newSession($id_cart_session);      
             }
         }
         header("Location: /users/");
@@ -46,8 +45,8 @@ class UsersController extends Controller
 
     public function actionExit()
     {
-        setcookie("PHPSESSID", null, time() - 1, '/');
-        setcookie("hash", null, time() - 1, '/');
+        $this->sessionObj->destroySession();
+        $this->sessionObj->setCookie("hash", null, time() - 1, '/');
         header("Location: /");
     }
 }

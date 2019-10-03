@@ -4,7 +4,6 @@ namespace app\model;
 
 class Product extends DbModel
 {
-    protected $id;
     protected $name;
     protected $rating;
     protected $color;
@@ -13,7 +12,6 @@ class Product extends DbModel
     protected $img_id;
 
     public function __construct(
-        $id = null,
         $name = null,
         $rating = null,
         $color = null,
@@ -21,7 +19,6 @@ class Product extends DbModel
         $price = null,
         $img_id = null
     ) {
-        $this->id = $id;
         $this->name = $name;
         $this->rating = $rating;
         $this->color = $color;

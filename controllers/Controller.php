@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\interfaces\IRender;
 use app\model\Users;
 use app\engine\Request;
+use app\engine\Session;
 use app\model\Cart;
 
 
@@ -14,13 +15,15 @@ abstract class Controller
     private $useLayout = true;
     private $renderer;
     protected $request;
+    protected $sessionObj;
     protected $session;
 
     public function __construct(IRender $render)
     {
        $this->renderer = $render;
        $this->request = new Request;  
-       $this->session = session_id();
+       $this->sessionObj = new Session;
+       $this->session = $this->sessionObj->getSession();
     }
 
     abstract public function actionDefault();

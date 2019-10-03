@@ -14,9 +14,8 @@ class ApiController extends Controller
 
     public function actionShowmore()
     {
-        $data = json_decode(file_get_contents('php://input'));
-        $showFromProduct = $data->showFromProduct;
-        $showCountProduct = $data->showCountProduct;
+        $showFromProduct = $this->request->params['showFromProduct'];
+        $showCountProduct = $this->request->params['showCountProduct'];
         $productList = Product::getLimit($showFromProduct, $showCountProduct);
         $catalog = $this->renderTemplates('catalog', ['productList' => $productList]);
         header("Content-type: text/html; charset=utf-8;");
@@ -27,11 +26,10 @@ class ApiController extends Controller
 
     public function actionRegistration()
     {
-        $data = json_decode(file_get_contents('php://input'));
-        $name = $data->name;
-        $email = $data->email;
-        $password = $data->password;
-        $phone = $data->phone;
+        $name = $this->request->params['name'];
+        $email = $this->request->params['email'];
+        $password = $this->request->params['password'];
+        $phone = $this->request->params['phone'];
 
 
         if ($name == '' || $email == '' || $password == '') {
@@ -58,9 +56,7 @@ class ApiController extends Controller
 
     public function actionAddtocart()
     {
-        $data = json_decode(file_get_contents('php://input'));
-        $id_product = $data->id_product;
-        (new Cart($this->session, $id_product))->save();
+        (new Cart($this->request->params['id_product']))->save();
         $response = [
             'countCart' => Cart::countCart(),
             'summCart' => Cart::summCart()
@@ -72,8 +68,7 @@ class ApiController extends Controller
 
     public function actionDeletetocart()
     {
-        $data = json_decode(file_get_contents('php://input'));
-        $id_cart_item = $data->id_cart_item;
+        $id_cart_item =  $this->request->params['id_cart_item'];
         $deletedProduct = Cart::getOne($id_cart_item);
         if ($deletedProduct->id_session == $this->session) {
             $deletedProduct->delete();

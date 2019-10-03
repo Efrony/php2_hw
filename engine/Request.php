@@ -9,7 +9,7 @@ class Request
     protected $method;
     protected $controllerName;
     protected $actionName;
-    protected $otherParams;
+    protected $params;
 
 
     public function __construct()
@@ -32,6 +32,12 @@ class Request
         $paramsUri = explode('/', $this->url);
         $this->controllerName = $paramsUri[1];
         $this->actionName = $paramsUri[2];
-        $this->otherParams = $_REQUEST;
+        $this->params = $_REQUEST;
+        $data = json_decode(file_get_contents('php://input'));
+        if (!is_null($data)){
+            foreach ($data as $key => $value) {
+                $this->params[$key] = $value;
+            }
+        }
     }
 }
