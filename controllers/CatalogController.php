@@ -2,15 +2,15 @@
 
 namespace app\controllers;
 
-use app\model\Product;
-use app\model\Comments;
+use app\model\repositories\CommentsRepository;
+use app\model\repositories\ProductRepository;
 
 
 class CatalogController extends Controller
 {
     public function actionDefault()
     {
-        $productList = Product::getLimit(0, 8);
+        $productList = (new ProductRepository())->getLimit(0, 8);
         $catalog = $this->renderTemplates('catalog', ['productList' => $productList]);
         echo $this->render('women', ['catalog' => $catalog]);
     }
@@ -19,12 +19,12 @@ class CatalogController extends Controller
     public function actionProduct()
     {
         $id = $this->request->params['id'];
-        $productItem = Product::getOne($id);
+        $productItem = (new ProductRepository())->getOne($id);
         $productItem->rating++;
-        $productItem->save();
+        (new ProductRepository())->save($productItem);
         
-        $productList = Product::getLimit(0, 4);
-        $commentsList = Comments::getWhere('id_product', $id);
+        $productList = (new ProductRepository())->getLimit(0, 4);
+        $commentsList = (new CommentsRepository())->getWhere('id_product', $id);
         $catalog = $this->renderTemplates('catalog', ['productList' => $productList]);
 
         echo $this->render('product', [

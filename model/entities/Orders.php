@@ -1,16 +1,18 @@
 <?php
 
-namespace app\model;
+namespace app\model\entities;
 
-class Orders extends DbModel
+use app\model\entities\DataEntity;
+
+class Orders extends DataEntity
 {
-    protected $status = 'Не подтверждён';
-    protected $email;
-    protected $address;
-    protected $phone;
-    protected $id_product;
-    protected $name;
-    protected $summ;
+    public $status = 'Не подтверждён';
+    public $email;
+    public $address;
+    public $phone;
+    public $id_product;
+    public $name;
+    public $summ;
 
     public function __construct(
         $email = null,
@@ -20,6 +22,7 @@ class Orders extends DbModel
         $name = null,
         $summ = null
     ) {
+        parent::__construct();
         $this->email = $email;
         $this->address = $address;
         $this->phone = $phone;
@@ -27,8 +30,5 @@ class Orders extends DbModel
         $this->name = $name;
         $this->summ = $summ;
     }
-    public static function getNameTable()
-    {
-        return 'orders';
-    }
+
 }

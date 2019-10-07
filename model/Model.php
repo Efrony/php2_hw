@@ -3,15 +3,14 @@
 
 namespace app\model;
 
-use app\interfaces\IModel;
+use app\engine\Db;
 use app\engine\Session;
 
-abstract class Model implements IModel
+abstract class Model
 {
-    protected $id;
-    protected $id_session;
-    protected $changedProperties = [];
-    
+    public $id;
+    public $id_session;
+    public $changedProperties = [];
 
     public function __construct()
     {
@@ -28,7 +27,6 @@ abstract class Model implements IModel
     public function __set($property, $value)
     {
         if (property_exists($this, $property) && $property !== 'id') {
-
                 $this->$property = $value;
                 $this->changedProperties[] = $property;
         }

@@ -2,16 +2,16 @@
 
 namespace app\controllers;
 
-use app\model\Cart;
+use app\model\repositories\CartRepository;
 
 
 class CartController extends Controller
 {
     public function actionDefault()
     {
-        $cartList = Cart::getCart();
-        $countCart = Cart::countCart();
-        $summCart = Cart::summCart();
+        $cartList = (new CartRepository())->getCart();
+        $countCart = (new CartRepository())->countCart();
+        $summCart = (new CartRepository())->summCart();
         echo $this->render('cart', ['cartList' => $cartList, 'countCart' => $countCart, 'summCart' => $summCart]);
     }
 

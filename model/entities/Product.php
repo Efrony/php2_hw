@@ -1,15 +1,17 @@
 <?php
 
-namespace app\model;
+namespace app\model\entities;
 
-class Product extends DbModel
+use app\model\entities\DataEntity;
+
+class Product extends DataEntity
 {
-    protected $name;
-    protected $rating;
-    protected $color;
-    protected $discription;
-    protected $price;
-    protected $img_id;
+    public $name;
+    public $rating;
+    public $color;
+    public $discription;
+    public $price;
+    public $img_id;
 
     public function __construct(
         $name = null,
@@ -19,16 +21,13 @@ class Product extends DbModel
         $price = null,
         $img_id = null
     ) {
+        parent::__construct();
         $this->name = $name;
         $this->rating = $rating;
         $this->color = $color;
         $this->discription = $discription;
         $this->price = $price;
         $this->img_id = $img_id;
-    }
-
-    public static function getNameTable()
-    {
-        return 'product';
+        unset($this->id_session);
     }
 }

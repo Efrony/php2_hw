@@ -3,10 +3,10 @@
 namespace app\controllers;
 
 use app\interfaces\IRender;
-use app\model\Users;
+use app\model\repositories\CartRepository;
+use app\model\repositories\UsersRepository;
 use app\engine\Request;
 use app\engine\Session;
-use app\model\Cart;
 
 
 abstract class Controller
@@ -44,11 +44,11 @@ abstract class Controller
             $layout = $this->layout;
             $inLayout = $this->renderTemplates(LAYOUTS_DIR . $layout, [
                 'header' => $this->renderTemplates('header', [
-                    'isAuth' => Users::isAuth(),
-                    'myEmail' => Users::getUser(),
-                    'countCart' => Cart::countCart(),
+                    'isAuth' => (new UsersRepository())->isAuth(),
+                    'myEmail' => (new UsersRepository())->getUser(),
+                    'countCart' => (new CartRepository())->countCart(),
                 ]),
-                'menu' => $this->renderTemplates('menu', ['myEmail' => Users::getUser()]),
+                'menu' => $this->renderTemplates('menu', ['myEmail' => (new UsersRepository())->getUser()]),
                 'content' => $this->renderTemplates($template, $paramsContent),
                 'footer' => $this->renderTemplates('footer'),
             ]);
