@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\engine\App;
 use app\model\repositories\UsersRepository;
 
 class UsersController extends Controller
@@ -9,7 +10,7 @@ class UsersController extends Controller
     public function actionDefault()
     {
         echo $this->render('users', [
-            'isAuth' => (new UsersRepository())->isAuth(),
+            'isAuth' => App::call()->usersRepository->isAuth(),
         ]);
     }
     public function actionLogin()  // после нажатия кнопки логин
@@ -18,23 +19,23 @@ class UsersController extends Controller
         $pass = $this->request->params['password'];
         $rememberMe = $this->request->params['remember'];
 
-        if (!(new UsersRepository())->isCompliance($login, $pass)) {  // если не соответствует логин и пароль
+        if (!App::call()->usersRepository->isCompliance($login, $pass)) {  // если не соответствует логин и пароль
             $message = 'Не верный логин или пароль';
             header("Location: /users/default/?loginmessage={$message}");
             die;
         } else {
             if ($rememberMe == 'yes') { // если нажата кнопка Запомнить 
                 $hash = uniqid(rand(), true);  // генерировать случайный хэш
-                $user = (new UsersRepository())->getObjectWhere('email', $login);
+                $user = App::call()->usersRepository->getObjectWhere('email', $login);
                 $user->hash = $hash;
-                (new UsersRepository())->update($user);
+                App::call()->usersRepository->update($user);
                 $this->sessionObj->setCookie("hash", $hash, time() + 36000, '/');
             }
 
             $id_cart_session = $user->id_cart_session;
             if (is_null($id_cart_session)) {
                 $user->id_cart_session = $this->session;
-                (new UsersRepository())->update($user);
+                App::call()->usersRepository->update($user);
             } else {
                $this->sessionObj->destroySession();
                $this->sessionObj->newSession($id_cart_session);      

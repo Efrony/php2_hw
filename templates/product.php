@@ -20,7 +20,7 @@
 <main class="product_page">
     <div class="bcgBlock"></div>
     <div class="content">
-        <div class="contentBcg"><img src="/<?= DIR_CATALOG .  $productItem->img_id . '.jpg' ?>" alt="fotoProduct">
+        <div class="contentBcg"><img src="/<?= $dir_catalog .  $productItem->img_id . '.jpg' ?>" alt="fotoProduct">
             <i class="fa fa-eye" aria-hidden="true"></i><span class="raring"> <?=$productItem->rating?></span>
             <i class="fas fa-comment"></i><span class="raring"> <?= count($commentsList); ?></span>
             <aside>

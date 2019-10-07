@@ -1,7 +1,7 @@
 <?php foreach ($productList as $itemProduct) : ?>
     <a href="/catalog/product/?id=<?= $itemProduct['id'] ?>">
         <figure class="productItem">
-            <img src="/<?= (DIR_CATALOG .  $itemProduct['img_id']) . '.jpg'; ?>" alt="productFoto">
+            <img src="/<?= ($dir_catalog . $itemProduct['img_id']) . '.jpg'; ?>" alt="productFoto">
             <div class="shadowHover">
                 <button onclick="return false" class="addToCart" data-id="<?= $itemProduct['id'] ?>">&ensp;Add to Cart</button>
             </div>

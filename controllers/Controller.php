@@ -2,9 +2,8 @@
 
 namespace app\controllers;
 
+use app\engine\App;
 use app\interfaces\IRender;
-use app\model\repositories\CartRepository;
-use app\model\repositories\UsersRepository;
 use app\engine\Request;
 use app\engine\Session;
 
@@ -42,13 +41,13 @@ abstract class Controller
     {
         if ($this->useLayout) {
             $layout = $this->layout;
-            $inLayout = $this->renderTemplates(LAYOUTS_DIR . $layout, [
+            $inLayout = $this->renderTemplates( App::call()->config['LAYOUTS_DIR'] . $layout, [
                 'header' => $this->renderTemplates('header', [
-                    'isAuth' => (new UsersRepository())->isAuth(),
-                    'myEmail' => (new UsersRepository())->getUser(),
-                    'countCart' => (new CartRepository())->countCart(),
+                    'isAuth' => App::call()->usersRepository->isAuth(),
+                    'myEmail' => App::call()->usersRepository->getUser(),
+                    'countCart' => App::call()->cartRepository->countCart($this->session),
                 ]),
-                'menu' => $this->renderTemplates('menu', ['myEmail' => (new UsersRepository())->getUser()]),
+                'menu' => $this->renderTemplates('menu', ['myEmail' => App::call()->usersRepository->getUser()]),
                 'content' => $this->renderTemplates($template, $paramsContent),
                 'footer' => $this->renderTemplates('footer'),
             ]);

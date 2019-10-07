@@ -27,7 +27,7 @@
                         <?php foreach ($cartList as $cartItem) : ?>
                             <div class="productItem" id="cart_number_<?= $cartItem['id_cart_item'] ?>">
                                 <figure>
-                                    <a href="#"><img src="/<?= (DIR_CATALOG .  $cartItem['img_id']) . '.jpg'; ?>"></a>
+                                    <a href="#"><img src="/<?= ($dir_catalog .  $cartItem['img_id']) . '.jpg'; ?>"></a>
                                     <figcaption><?= $cartItem['name'] ?>
                                         <p><b>Color:</b><?= $cartItem['color'] ?>
                                             <br><b>Size:</b> Xll</p>

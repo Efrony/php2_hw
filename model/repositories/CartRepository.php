@@ -20,27 +20,27 @@ class CartRepository extends Repository
     }
 
 
-    public function getCart()
+    public function getCart($id_session)
     {
         $sql = "SELECT 
         cart.id AS id_cart_item, id_session, product.id AS id_product, color, price, quantity, `name`, `img_id`
         FROM cart inner join product on cart.id_product = product.id
         AND id_session = :id_session;";
 
-        return $this->db->queryAll($sql, ['id_session' => $this->id_session]);
+        return $this->db->queryAll($sql, ['id_session' => $id_session]);
     }
 
 
-    public function countCart()
+    public function countCart($id_session)
     {
-        $cartList = $this->getWhere('id_session', $this->id_session);
+        $cartList = $this->getWhere('id_session', $id_session);
         return count($cartList);
     }
 
 
-    public function summCart()
+    public function summCart($id_session)
     {
-        $cartList = $this->getCart();
+        $cartList = $this->getCart($id_session);
         $summCart = 0;
         foreach ($cartList as $itemProduct) {
             $summCart += $itemProduct['price'] * $itemProduct['quantity'];

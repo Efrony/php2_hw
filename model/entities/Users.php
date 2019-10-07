@@ -2,7 +2,6 @@
 
 namespace app\model\entities;
 
-use app\model\entities\DataEntity;
 
 class Users extends DataEntity
 {
@@ -21,12 +20,10 @@ class Users extends DataEntity
         $id_cart_session = null
 
     ) {
-        parent::__construct();
         $this->name = $name;
         $this->email = $email;
         $this->password = $password;
         $this->phone = $phone;
         $this->id_cart_session = $id_cart_session;
-        unset($this->id_session);
     }
 }

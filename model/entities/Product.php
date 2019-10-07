@@ -2,7 +2,6 @@
 
 namespace app\model\entities;
 
-use app\model\entities\DataEntity;
 
 class Product extends DataEntity
 {
@@ -21,13 +20,11 @@ class Product extends DataEntity
         $price = null,
         $img_id = null
     ) {
-        parent::__construct();
         $this->name = $name;
         $this->rating = $rating;
         $this->color = $color;
         $this->discription = $discription;
         $this->price = $price;
         $this->img_id = $img_id;
-        unset($this->id_session);
     }
 }

@@ -9,13 +9,8 @@ use app\engine\Session;
 abstract class Model
 {
     public $id;
-    public $id_session;
     public $changedProperties = [];
 
-    public function __construct()
-    {
-        $this->id_session = (new Session)->getSession();
-    }
 
     public function __get($property)
     {

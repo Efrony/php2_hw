@@ -9,7 +9,7 @@ class Render implements IRender
     public function renderTemplates($template, $params = [])
     {
         extract($params);
-        $filename = TEMPLATES_DIR . "{$template}.php";
+        $filename = App::call()->config['TEMPLATES_DIR'] . "{$template}.php";
         ob_start();
         if (file_exists($filename)) {
             include $filename;

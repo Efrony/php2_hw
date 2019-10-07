@@ -2,7 +2,6 @@
 
 namespace app\model\entities;
 
-use app\model\entities\DataEntity;
 
 class Orders extends DataEntity
 {
@@ -22,7 +21,6 @@ class Orders extends DataEntity
         $name = null,
         $summ = null
     ) {
-        parent::__construct();
         $this->email = $email;
         $this->address = $address;
         $this->phone = $phone;

@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\engine\App;
 use app\model\entities\Cart;
 use app\model\entities\Users;
 use app\model\repositories\CartRepository;
@@ -18,8 +19,11 @@ class ApiController extends Controller
     {
         $showFromProduct = $this->request->params['showFromProduct'];
         $showCountProduct = $this->request->params['showCountProduct'];
-        $productList = (new ProductRepository())->getLimit($showFromProduct, $showCountProduct);
-        $catalog = $this->renderTemplates('catalog', ['productList' => $productList]);
+        $productList = App::call()->productRepository->getLimit($showFromProduct, $showCountProduct);
+        $catalog = $this->renderTemplates('catalog', [
+            'productList' => $productList,
+            'dir_catalog' => App::call()->config['DIR_CATALOG']
+        ]);
         header("Content-type: text/html; charset=utf-8;");
         echo $catalog;
         die;
@@ -37,13 +41,13 @@ class ApiController extends Controller
         if ($name == '' || $email == '' || $password == '') {
             $message = 'Не заполнены обязательные поля';
             $classValid =  'invalidForm ';
-        } elseif ((new UsersRepository())->isRegistred($email)) {
+        } elseif (App::call()->usersRepository->isRegistred($email)) {
             $message = 'Такой e-mail уже зарегистрирован';
             $classValid =  'invalidForm ';
         } else {
             $hash = password_hash($password, PASSWORD_DEFAULT);
-            $newUser =new Users($name, $email, $hash, $phone, $this->session);
-            (new UsersRepository())->insert($newUser);
+            $newUser = new Users($name, $email, $hash, $phone, $this->session);
+            App::call()->usersRepository->insert($newUser);
 
             $message = 'Регистрация прошла успешно';
             $classValid =  'validForm';
@@ -59,10 +63,10 @@ class ApiController extends Controller
 
     public function actionAddtocart()
     {
-        (new CartRepository())->save(new Cart($this->request->params['id_product']));
+        App::call()->cartRepository->save(new Cart($this->request->params['id_product'], $this->session));
         $response = [
-            'countCart' => (new CartRepository())->countCart(),
-            'summCart' =>  (new CartRepository())->summCart()
+            'countCart' => App::call()->cartRepository->countCart($this->session),
+            'summCart' =>  App::call()->cartRepository->summCart($this->session)
         ];
         header("Content-type: application/json");
         echo json_encode($response);
@@ -72,15 +76,15 @@ class ApiController extends Controller
     public function actionDeletetocart()
     {
         $id_cart_item =  $this->request->params['id_cart_item'];
-        $deletedProduct =(new CartRepository())->getOne($id_cart_item);
+        $deletedProduct = App::call()->cartRepository->getOne($id_cart_item);
         if ($deletedProduct->id_session == $this->session) {
-            (new CartRepository())->delete($deletedProduct);
+            App::call()->cartRepository->delete($deletedProduct);
         }
 
         $response = [
             'id_deleted' => $id_cart_item,
-            'countCart' => (new CartRepository())->countCart(),
-            'summCart' => (new CartRepository())->summCart()
+            'countCart' => App::call()->cartRepository->countCart($this->session),
+            'summCart' => App::call()->cartRepository->summCart($this->session)
         ];
         header("Content-type: application/json");
         echo json_encode($response);
@@ -91,11 +95,11 @@ class ApiController extends Controller
     {
         $cartList = (new CartRepository())->getColumnWhere('id', 'id_session', $this->session);
         foreach ($cartList as $id_cart_item) {
-            $deletedProduct = (new CartRepository())->getOne($id_cart_item);
-            (new CartRepository())->delete($deletedProduct);
+            $deletedProduct = App::call()->cartRepository->getOne($id_cart_item);
+            App::call()->cartRepository->delete($deletedProduct);
         }
         
-        $response = ['countCart' => (new CartRepository())->countCart()];
+        $response = ['countCart' => App::call()->cartRepository->countCart($this->session)];
         header("Content-type: application/json");
         echo json_encode($response);
     }
