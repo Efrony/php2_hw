@@ -13,9 +13,6 @@ return [
     'TEMPLATES_DIR'=> '../templates/',
     'LAYOUTS_DIR'=> "./layouts/",
     'DIR_CATALOG'=> './img/catalog/',
-    //'root_dir' => __DIR__ . "/../",
-    //'templates_dir' => __DIR__ . "/../views/",
-    //'controllers_namespaces' => 'app\controllers\\',
     'components' => [
         'db' => [
             'class' => Db::class,
@@ -23,8 +20,14 @@ return [
             'host' => 'localhost',
             'login' => 'root',
             'password' => '',
+            'charset' => 'utf8',
             'database' => 'shop',
-            'charset' => 'utf8'
+            'opt' => [
+                    \PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION,
+                    \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC, // fetch(PDO::FETCH_ASSOC)) fetch(PDO::FETCH_LAZY))
+                    // \PDO::ATTR_EMULATE_PREPARES   => false, отключение режима эмуляции
+            ]
+
         ],
         'request' => [
             'class' => Request::class

@@ -6,23 +6,19 @@ use app\traits\Tsingletone;
 
 class Db
 {
-    use Tsingletone;
-    
+    protected $config;
     private $connection = null;
-    private $config = [
-        'driver' => 'mysql',
-        'host' => 'localhost',
-        'login' => 'root',
-        'password' => '',
-        'charset' => 'utf8',
-        'database' => 'shop',
-        'opt' => [
-            \PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION,
-            \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC, // fetch(PDO::FETCH_ASSOC)) fetch(PDO::FETCH_LAZY))
-            // \PDO::ATTR_EMULATE_PREPARES   => false, отключение режима эмуляции
-        ]
-    ];
 
+    public function __construct($driver, $host, $login, $password, $charset, $database, $opt)
+    {
+        $this->config['driver'] = $driver ;
+        $this->config['host'] = $host ;
+        $this->config['login'] = $login ;
+        $this->config['password'] = $password ;
+        $this->config['charset'] = $charset ;
+        $this->config['database'] = $database ;
+        $this->config['opt'] = $opt ;
+    }
 
     private function getDSN()
     {

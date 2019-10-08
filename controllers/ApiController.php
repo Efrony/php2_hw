@@ -6,8 +6,6 @@ use app\engine\App;
 use app\model\entities\Cart;
 use app\model\entities\Users;
 use app\model\repositories\CartRepository;
-use app\model\repositories\ProductRepository;
-use app\model\repositories\UsersRepository;
 
 class ApiController extends Controller
 {

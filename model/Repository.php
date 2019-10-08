@@ -3,25 +3,19 @@
 
 namespace app\model;
 
+use app\engine\App;
 use app\engine\Db;
 use app\model\entities\DataEntity;
 
 abstract class Repository extends Model
 {
-    protected $db;
-
-
-    public function __construct()
-    {
-        $this->db = Db::getInstance();
-    }
 
 
     public function getOne($id)
     {
         $tableName = $this->getNameTable();
         $sql = "SELECT * FROM {$tableName} WHERE id = :id";
-        return $this->db->queryObject($sql, ['id' => $id], $this->getEntityClass());
+        return App::call()->db->queryObject($sql, ['id' => $id], $this->getEntityClass());
     }
 
 
@@ -29,7 +23,7 @@ abstract class Repository extends Model
     {
         $tableName = $this->getNameTable();
         $sql = "SELECT * FROM {$tableName}";
-        return $this->db->queryAll($sql);
+        return  App::call()->db->queryAll($sql);
     }
 
 
@@ -37,7 +31,7 @@ abstract class Repository extends Model
     {
         $tableName = $this->getNameTable();
         $sql = "SELECT * FROM {$tableName} ORDER BY `rating` DESC LIMIT {$from}, {$to}";
-        return $this->db->queryAll($sql);
+        return App::call()->db->queryAll($sql);
     }
 
 
@@ -45,34 +39,39 @@ abstract class Repository extends Model
     {
         $tableName = $this->getNameTable();
         $sql = "SELECT * FROM {$tableName}  WHERE {$condition} = :point";
-        $data = $this->db->queryObject($sql, ['point'=> $point],  $this->getEntityClass());
+        $data = App::call()->db->queryObject($sql, ['point'=> $point],  $this->getEntityClass());
         return $data;
     }
-
 
 
     public function getWhere($condition, $point)
     {
         $tableName = $this->getNameTable();
         $sql = "SELECT * FROM {$tableName}  WHERE {$condition} = :point";
-        $data = $this->db->queryAll($sql, ['point' => $point]);
+        $data = App::call()->db->queryAll($sql, ['point' => $point]);
         return $data;
     }
-
-
     
     public function getOneWhere($condition, $point)
     {
         $tableName = $this->getNameTable();
         $sql = "SELECT * FROM {$tableName}  WHERE {$condition} = :point";
-        $data = $this->db->queryOne($sql, ['point' => $point]);
+        $data = App::call()->db->queryOne($sql, ['point' => $point]);
         return $data;
     }
 
     public function getColumnWhere($column, $condition, $point) {
         $tableName = $this->getNameTable();
         $sql = "SELECT {$column} FROM {$tableName} WHERE {$condition} = :point";
-        return $this->db->queryColumn($sql, ['point' => $point]);
+        return App::call()->db->queryColumn($sql, ['point' => $point]);
+    }
+
+    public function getArrayWhere($condition, $point)
+    {
+        $tableName = $this->getNameTable();
+        $sql = "SELECT * FROM {$tableName}  WHERE {$condition} = :point";
+        $data = App::call()->db->queryAll($sql, ['point' => $point]);
+        return $data;
     }
 
 
@@ -90,9 +89,9 @@ abstract class Repository extends Model
         $tableName = $this->getNameTable();
 
         $sql = "INSERT INTO {$tableName} ({$columns}) VALUES ({$values})";
-        $this->db->executeQuery($sql, $params);
+        App::call()->db->executeQuery($sql, $params);
 
-        $entity->id = $this->db->lastInsertId();
+        $entity->id = App::call()->db->lastInsertId();
     }
 
     public function update(DataEntity $entity)
@@ -100,17 +99,18 @@ abstract class Repository extends Model
         $string = '';
         $params = [];
         foreach ($entity as $key=>$value) {
-          //  if (in_array($key, $entity->changedProperties)) {  !!! почему то свойсва перествли добавляться в changedProperties при изменении
-            if ($key == 'id' || $key == 'changedProperties')    continue;
+            //if (in_array($key, $entity->changedProperties)) { // !!! почему то свойсва перествли добавляться в changedProperties при изменении
+            if ($key == 'id' || $key == 'changedProperties') continue;
             $string .= "`{$key}` = :{$key}, ";
             $params[$key] = $value;
+            //}
         }
         $string = substr($string, 0, -2); // убираем в конце пробел и запятую
         $tableName = $this->getNameTable();
         $sql = "UPDATE {$tableName} SET {$string} WHERE (`id` = :id);";
         $params['id'] = $entity->id;
         $entity->changedProperties = [];
-        return $this->db->executeQuery($sql, $params);
+        return App::call()->db->executeQuery($sql, $params);
     }
 
 
@@ -118,7 +118,7 @@ abstract class Repository extends Model
     {
         $tableName = $this->getNameTable();
         $sql = "DELETE FROM {$tableName} WHERE id = :id";
-        return $this->db->executeQuery($sql, ['id' => $entity->id]);
+        return App::call()->db->executeQuery($sql, ['id' => $entity->id]);
     }
 
 

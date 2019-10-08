@@ -24,9 +24,10 @@ class UsersController extends Controller
             header("Location: /users/default/?loginmessage={$message}");
             die;
         } else {
+            $user = App::call()->usersRepository->getObjectWhere('email', $login);
+
             if ($rememberMe == 'yes') { // если нажата кнопка Запомнить 
                 $hash = uniqid(rand(), true);  // генерировать случайный хэш
-                $user = App::call()->usersRepository->getObjectWhere('email', $login);
                 $user->hash = $hash;
                 App::call()->usersRepository->update($user);
                 $this->sessionObj->setCookie("hash", $hash, time() + 36000, '/');

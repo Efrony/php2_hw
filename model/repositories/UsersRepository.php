@@ -21,7 +21,7 @@ class UsersRepository extends Repository
 
     public function getUser()
     {
-        return $this->isAuth() ? $_SESSION["email"] : "Guest";
+        return $this->isAuth() ? $_SESSION['email'] : "Guest";
     }
 
 

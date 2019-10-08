@@ -2,6 +2,7 @@
 
 namespace app\model\repositories;
 
+use app\engine\App;
 use app\model\entities\Cart;
 use app\model\Repository;
 
@@ -27,7 +28,7 @@ class CartRepository extends Repository
         FROM cart inner join product on cart.id_product = product.id
         AND id_session = :id_session;";
 
-        return $this->db->queryAll($sql, ['id_session' => $id_session]);
+        return App::call()->db->queryAll($sql, ['id_session' => $id_session]);
     }
 
 

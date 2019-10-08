@@ -11,11 +11,11 @@ require_once __DIR__ . "\\..\\vendor\\autoload.php";
 $config = include $_SERVER['DOCUMENT_ROOT'] . "/../config/config.php";
 
 
-try {
+//try {
     App::call()->run($config);
-} catch (Exception $e) {
-    var_dump($e);
-}
+//} catch (Exception $e) {
+//    var_dump($e);
+//}
 
 
 
