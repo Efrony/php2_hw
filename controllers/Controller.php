@@ -4,9 +4,6 @@ namespace app\controllers;
 
 use app\engine\App;
 use app\interfaces\IRender;
-use app\engine\Request;
-use app\engine\Session;
-
 
 abstract class Controller
 {
@@ -20,8 +17,8 @@ abstract class Controller
     public function __construct(IRender $render)
     {
        $this->renderer = $render;
-       $this->request = new Request;  
-       $this->sessionObj = new Session;
+       $this->request = App::call()->request;
+       $this->sessionObj = App::call()->session;
        $this->session = $this->sessionObj->getSession();
     }
 
@@ -47,7 +44,7 @@ abstract class Controller
                     'myEmail' => App::call()->usersRepository->getUser(),
                     'countCart' => App::call()->cartRepository->countCart($this->session),
                 ]),
-                'menu' => $this->renderTemplates('menu', ['myEmail' => App::call()->usersRepository->getUser()]),
+                'menu' => $this->renderTemplates('menu', ['isAdmin' => App::call()->usersRepository->isAdmin()]),
                 'content' => $this->renderTemplates($template, $paramsContent),
                 'footer' => $this->renderTemplates('footer'),
             ]);

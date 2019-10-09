@@ -11,6 +11,8 @@ class UsersController extends Controller
     {
         echo $this->render('users', [
             'isAuth' => App::call()->usersRepository->isAuth(),
+            'loginMessage' => $this->request->params['loginMessage'],
+            'login' => $this->request->params['login'],
         ]);
     }
     public function actionLogin()  // после нажатия кнопки логин
@@ -21,7 +23,7 @@ class UsersController extends Controller
 
         if (!App::call()->usersRepository->isCompliance($login, $pass)) {  // если не соответствует логин и пароль
             $message = 'Не верный логин или пароль';
-            header("Location: /users/default/?loginmessage={$message}");
+            header("Location: /users/?loginMessage={$message}&login={$login}");
             die;
         } else {
             $user = App::call()->usersRepository->getObjectWhere('email', $login);

@@ -24,6 +24,14 @@ class UsersRepository extends Repository
         return $this->isAuth() ? $_SESSION['email'] : "Guest";
     }
 
+    public function isAdmin()
+    {
+        if ($this->getUser() == 'admin@admin.com' or $this->getUser() == 'admin@admin.ru') {
+            return true;
+        }
+        return false;
+    }
+
 
     public function isAuth() //проверка авторизации
     {

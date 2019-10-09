@@ -38,9 +38,9 @@
                 <p class="about">Please log in below</p>
                 <p><span class="red">!!! ДЛЯ ПРОВЕРКИ admin@admin.com  пароль 123 !!!</span></p>
                 <p class="point inp"> EMAIL ADDRESS <span class="red">*</span></p>
-                <input type="email" name="login" required value="<?=$_POST['login']?>" placeholder="admin@admin.com">
+                <input type="email" name="login" required value="<?=$login;?>" placeholder="admin@admin.com">
                 <p class="point inp"> PASSWORD <span class="red">*</span></p>
-                <input type="password" name="password" required value="<?=$_POST['password']?>">
+                <input type="password" name="password" required>
                 <div class="point">
                     <p class="point inp">Remember me:</p>
                     <input type="radio" name='remember' id="ch-1" value="yes" checked>
@@ -49,7 +49,7 @@
                     <label for="ch-2">No</label>
                 </div>
                 <p><span class="red">* Required Fileds</span></p>
-                <p id="messageLogin" class="invalidForm"><?=$_GET['loginmessage']?></p>
+                <p id="messageLogin" class="invalidForm"><?=$loginMessage;?></p>
                 <input type="submit" name="loginButton" value="LOG IN">
             </form>
         </section>

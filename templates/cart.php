@@ -2,8 +2,8 @@
     <div class="newArrivalsBlock">
 
         <div class="newArrivals">
-            <?php if (isset($_GET['orderMessage'])) : ?>
-                <p>Ваш заказ оформлен! Номер заказа №<?=$_GET['orderMessage']?></p>
+            <?php if (isset($orderMessage)) : ?>
+                <p>Ваш заказ оформлен! Номер заказа №<?=$orderMessage?></p>
             <?php else : ?>
                 <p>the cart is empty...</p>
             <?php endif ?>
@@ -88,7 +88,7 @@
                     </p>
                 </div>
                 <br>
-                <p id="messageLogin" class="invalidForm"><?= $_GET['phonemessage'] ?></p>
+                <p id="messageLogin" class="invalidForm"><?=$phoneMessage?></p>
                 <input id="sendOrder" type="submit" value="SEND ORDER" name="sendOrder">
             </div>
         </form>

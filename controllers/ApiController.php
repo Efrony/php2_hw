@@ -5,7 +5,6 @@ namespace app\controllers;
 use app\engine\App;
 use app\model\entities\Cart;
 use app\model\entities\Users;
-use app\model\repositories\CartRepository;
 
 class ApiController extends Controller
 {
@@ -34,7 +33,6 @@ class ApiController extends Controller
         $email = $this->request->params['email'];
         $password = $this->request->params['password'];
         $phone = $this->request->params['phone'];
-
 
         if ($name == '' || $email == '' || $password == '') {
             $message = 'Не заполнены обязательные поля';
@@ -71,16 +69,13 @@ class ApiController extends Controller
     }
 
 
-    public function actionDeletetocart()
+    public function actionDeleteToCart()
     {
-        $id_cart_item =  $this->request->params['id_cart_item'];
-        $deletedProduct = App::call()->cartRepository->getOne($id_cart_item);
-        if ($deletedProduct->id_session == $this->session) {
-            App::call()->cartRepository->delete($deletedProduct);
-        }
+        $idCartItem =  $this->request->params['id_cart_item'];
+        App::call()->cartRepository->deleteById($idCartItem, $this->session);
 
         $response = [
-            'id_deleted' => $id_cart_item,
+            'id_deleted' => $idCartItem,
             'countCart' => App::call()->cartRepository->countCart($this->session),
             'summCart' => App::call()->cartRepository->summCart($this->session)
         ];
@@ -91,14 +86,30 @@ class ApiController extends Controller
 
     public function actionClearCart()
     {
-        $cartList = (new CartRepository())->getColumnWhere('id', 'id_session', $this->session);
-        foreach ($cartList as $id_cart_item) {
-            $deletedProduct = App::call()->cartRepository->getOne($id_cart_item);
-            App::call()->cartRepository->delete($deletedProduct);
-        }
-        
+        App::call()->cartRepository->clearCart($this->session);
         $response = ['countCart' => App::call()->cartRepository->countCart($this->session)];
+
         header("Content-type: application/json");
         echo json_encode($response);
+    }
+
+    public function actionChangeStatusOrder()
+    {
+        if (App::call()->usersRepository->isAdmin()) {
+            $idOrder =  $this->request->params['id_order'];
+            $newStatusOrder =  $this->request->params['status_order'];
+
+            $changedOrder = App::call()->ordersRepository->getOne($idOrder);
+            $changedOrder->status = $newStatusOrder;
+            App::call()->ordersRepository->save($changedOrder);
+            $changedOrder = App::call()->ordersRepository->getOne($idOrder); //обновление из бд для проверки
+
+            $response = [
+                'id_order' => $changedOrder->id,
+                'status_order' =>  $changedOrder->status
+            ];
+            header("Content-type: application/json");
+            echo json_encode($response);
+        }
     }
 }

@@ -49,4 +49,12 @@ class CartRepository extends Repository
         return $summCart;
     }
 
+
+    public function clearCart($id_session) {
+        $cartList = App::call()->cartRepository->getColumnWhere('id', 'id_session', $id_session);
+        foreach ($cartList as $id_cart_item) {
+            App::call()->cartRepository->deleteById($id_cart_item, $id_session);
+        }
+    }
+
 }

@@ -5,6 +5,7 @@ use app\model\repositories\CommentsRepository;
 use app\model\repositories\OrdersRepository;
 use app\model\repositories\ProductRepository;
 use app\model\repositories\UsersRepository;
+use app\engine\Session;
 use app\engine\Db;
 
 return [
@@ -31,6 +32,10 @@ return [
         ],
         'request' => [
             'class' => Request::class
+        ],
+
+        'session' => [
+            'class' => Session::class
         ],
 
         // на будущее попробовать без reflection !!

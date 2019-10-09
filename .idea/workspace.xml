@@ -61,15 +61,16 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/model/entities" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../php.pro" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\feelgood\Desktop\php_hw\domains\php2.pro\model\entities" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\feelgood\Desktop\php_hw\domains\php2.pro\model\repositories" />
+      <recent name="C:\Users\feelgood\Desktop\php_hw\domains\php2.pro\model\entities" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\feelgood\Desktop\php_hw\domains\php2.pro\controllers" />
       <recent name="C:\Users\feelgood\Desktop\php_hw\domains\php2.pro\model\entities" />
     </key>
   </component>
@@ -104,6 +105,7 @@
       <workItem from="1570355460673" duration="23427000" />
       <workItem from="1570447715303" duration="13722000" />
       <workItem from="1570559010548" duration="5510000" />
+      <workItem from="1570593183008" duration="25187000" />
     </task>
     <servers />
   </component>

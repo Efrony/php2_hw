@@ -13,7 +13,4 @@ class Cart extends DataEntity
         $this->id_session = $id_session;
     }
 
-
-
-
 }

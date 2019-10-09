@@ -29,7 +29,13 @@ window.onload = function () {
             $clearCart = document.getElementById('clearCart')
             $clearCart.addEventListener('click', clearCart)
         }
-    } 
+    } else if (page == '/admin/') {
+        $changeStatusOrderButton = document.getElementsByClassName('changeStatusOrder')
+        for (let i = 0; i < $changeStatusOrderButton.length; i++) {
+            $changeStatusOrderButton[i].addEventListener('click', changeStatusOrder)
+        }
+
+    }
 }
 
 function showMore() {
@@ -50,6 +56,11 @@ function showMore() {
             catalogField = document.getElementById('catalogField')
             catalogField.innerHTML += text
             showFromProduct += showCountProduct
+
+            $addToCartButtons = document.getElementsByClassName('addToCart')
+            for (let i = 0; i < $addToCartButtons.length; i++) {
+                $addToCartButtons[i].addEventListener('click', addToCart)
+            }
         })
 }
 
@@ -99,7 +110,7 @@ function addToCart(event) {
 
 function deleteToCart(event) {
     id_cart_item = event.target.dataset.id
-    fetch('/api/deletetocart', {
+    fetch('/api/deleteToCart', {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json'
@@ -135,4 +146,28 @@ function clearCart() {
                 */
             }
         })
+}
+
+function changeStatusOrder(event){
+    const id_order = event.target.dataset.id
+    const status_order = document.getElementById('status_order_' + id_order).value
+
+    if (status_order !== 'select_status') {
+        fetch('/api/changeStatusOrder', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                id_order: id_order,
+                status_order: status_order,
+            })
+        })
+            .then(response => response.json())
+            .then(res => {
+                const status_field =  document.getElementById('status_field_' + res['id_order'])
+                status_field.innerHTML = res['status_order']
+                status_field.style.cssText = "color: #fff; background: #ef5b70";
+            })
+    }
 }

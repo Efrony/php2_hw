@@ -35,7 +35,8 @@ class CatalogController extends Controller
             'productItem' => $productItem,
             'commentsList' => $commentsList,
             'catalog' => $catalog,
-            'dir_catalog' => App::call()->config['DIR_CATALOG']
+            'dir_catalog' => App::call()->config['DIR_CATALOG'],
+            'isAdmin' => App::call()->usersRepository->isAdmin(),
         ]);
     }
 }

@@ -22,7 +22,7 @@ class OrdersController extends Controller
                 $phone = App::call()->request->params['phone'];
                 if ($phone == '') {
                     $message = 'Вы не указали телефон';
-                    header("Location: /cart/default/?phonemessage={$message}");
+                    header("Location: /cart/default/?phoneMessage={$message}");
                     die;
                 }
                 $email = App::call()->usersRepository->getUser();
@@ -37,10 +37,10 @@ class OrdersController extends Controller
                 $name =  App::call()->request->params['name'];
                 $summCart = App::call()->cartRepository->summCart($this->session);
 
-                $newOrder = new Orders($email, $address, $phone, $orderProducts, $name, $summCart);
+                $newOrder = new Orders($email, $address, $phone, $orderProducts, $name, $summCart, $this->session);
                 App::call()->ordersRepository->insert($newOrder);
 
-                App::call()->cartRepository->clearCart();
+                App::call()->cartRepository->clearCart($this->session);
                 $orderMessage = $newOrder->id;
                 header("Location: /cart/default/?orderMessage={$orderMessage}");
             }

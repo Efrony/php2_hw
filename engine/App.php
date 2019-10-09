@@ -49,7 +49,9 @@ class App
 
     public function runController(){
         $this->controllerName = $this->request->controllerName ?: 'index';
-        $this->actionName = $this->request->actionName ?: 'default';
+        if (substr($this->request->actionName,0,1) !== '?') {  //  чтобы GET  не попадали в action
+            $this->actionName = $this->request->actionName ?: 'default';
+        } else $this->actionName = 'default';
 
         $controllerClass = $this->config['CONTROLLER_NAMESPACE'] . ucfirst($this->controllerName) . "Controller";
 

@@ -3,7 +3,7 @@
 namespace app\controllers;
 
 use app\engine\App;
-use app\model\repositories\CommentsRepository;
+
 
 class CommentsController extends Controller
 {
@@ -12,6 +12,8 @@ class CommentsController extends Controller
         $commentsList = App::call()->commentsRepository->getAll();
         echo $this->render('about_us', [
             'commentsList' => $commentsList,
+            'isAdmin' => App::call()->usersRepository->isAdmin(),
+            'actionName' => App::call()->actionName
         ]);
     }
 }

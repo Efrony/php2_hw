@@ -31,10 +31,12 @@
                         <?= $comment['name'] ?>
                         <p><?= $comment['date'] ?></p>
                     </address>
-                    <div class="buttons">
-                        <a href="?action=edit&message=edit&id=<?= $comment['id'] ?>">Редактировать</a>
-                        <a href="?action=delete&id=<?= $comment['id'] ?>">Удалить</a>
-                    </div>
+                    <?php if ($isAdmin) : ?>
+                        <div class="buttons">
+                            <a href="?action=edit&message=edit&id=<?= $comment['id'] ?>">Редактировать</a>
+                            <a href="?action=delete&id=<?= $comment['id'] ?>">Удалить</a>
+                        </div>
+                    <?php endif ?>
                 </article>
             </div>
         <? endforeach; ?>

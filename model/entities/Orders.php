@@ -12,6 +12,7 @@ class Orders extends DataEntity
     public $id_product;
     public $name;
     public $summ;
+    public $id_session;
 
     public function __construct(
         $email = null,
@@ -19,7 +20,8 @@ class Orders extends DataEntity
         $phone= null,
         $id_product= null,
         $name = null,
-        $summ = null
+        $summ = null,
+        $id_session = null
     ) {
         $this->email = $email;
         $this->address = $address;
@@ -27,6 +29,7 @@ class Orders extends DataEntity
         $this->id_product = $id_product;
         $this->name = $name;
         $this->summ = $summ;
+        $this->id_session = $id_session;
     }
 
 }

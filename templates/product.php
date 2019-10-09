@@ -76,16 +76,18 @@
                             <?= $comment['name'] ?>
                             <p><?= $comment['date'] ?></p>
                         </address>
-                        <div class="buttons">
-                            <a href="?action=edit&message=edit&id=<?= $comment['id'] ?>">Редактировать</a>
-                            <a href="?action=delete&id=<?= $comment['id'] ?>">Удалить</a>
-                        </div>
+                        <?php if ($isAdmin) : ?>
+                            <div class="buttons">
+                                <a href="/comments/edit/?id=<?= $comment['id'] ?>">Редактировать</a>
+                                <a href="/comments/delete/?id=<?= $comment['id'] ?>">Удалить</a>
+                            </div>
+                        <?php endif ?>
                     </article>
                 </div>
             <? endforeach; ?>
         </section>
         <section>
-            <form action="?action=<?= $_GET['action'] ?>" method="post" class="data-1">
+            <form action="/comments/<?=$actionName?>/" method="post" class="data-1">
                 <h5>write a comment</h5>
                 <p class="point inp">NAME <span class="red">*</span></p>
                 <input type="text" name="nameComment" required value="<?= $selectedComment['name'] ?>">

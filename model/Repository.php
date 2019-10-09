@@ -98,6 +98,7 @@ abstract class Repository extends Model
     {   
         $string = '';
         $params = [];
+
         foreach ($entity as $key=>$value) {
             //if (in_array($key, $entity->changedProperties)) { // !!! почему то свойсва перествли добавляться в changedProperties при изменении
             if ($key == 'id' || $key == 'changedProperties') continue;
@@ -119,6 +120,13 @@ abstract class Repository extends Model
         $tableName = $this->getNameTable();
         $sql = "DELETE FROM {$tableName} WHERE id = :id";
         return App::call()->db->executeQuery($sql, ['id' => $entity->id]);
+    }
+
+    public function deleteById($id, $session)
+    {
+        $tableName = $this->getNameTable();
+        $sql = "DELETE FROM {$tableName} WHERE (id = :id) AND (id_session = :id_session)";
+        return App::call()->db->executeQuery($sql, ['id' => $id, 'id_session' => $session]);
     }
 
 
