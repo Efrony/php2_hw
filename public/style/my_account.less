@@ -1,0 +1,178 @@
+.register {
+    margin: 0 auto;
+    width: 1142px;
+
+    .welcome {
+        padding: 50px 50px 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+        width: 1140px;
+
+        .collection {
+            color: #f16d7f;
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 24px;
+            text-transform: uppercase;
+        }
+
+        img {
+            margin: 16px;
+        }
+
+        .heading {
+            color: #4d4d4d;
+            font-size: 18px;
+            font-weight: 900;
+            line-height: 24px;
+            text-transform: uppercase;
+        }
+    }
+
+    section {
+        display: flex;
+        border-bottom: 1px solid #eaeaea;
+
+        &>div {
+            display: flex;
+            width: 100%;
+        }
+
+        .data-1 {
+            width: 100%;
+            padding-left: 25px;
+            margin-top: 85px;
+
+            input[type='submit'] {
+                margin-top: 10px;
+            }
+        }
+
+        .data-2 {
+            width: 100%;
+            margin-top: 110px;
+        }
+
+        h5 {
+            margin: 0 0 33px -25px;
+            color: #222222;
+            font-size: 16px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .point {
+            color: #222222;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin: 27px 0 8px 0;
+
+            input {
+                margin-bottom: 10px;
+            }
+        }
+
+        .about {
+            color: #b3b2b2;
+            font-size: 13px;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .aboutLast {
+            margin-top: -15px;
+        }
+
+        .red {
+            color: #ff0d0d;
+            font-size: 13px;
+            font-weight: 400;
+        }
+
+        .inp {
+            margin-top: 20px;
+        }
+
+        input[type='submit'] {
+            margin: 30px 0 75px 0;
+            border: 1px solid #eaeaea;
+            background-color: #ffffff;
+            padding: 16px 50px;
+            color: #4a4a4a;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #f16d7f;
+                color: #fff;
+            }
+        }
+
+        input[type='text'],
+        input[type='email'],
+        input[type='password'] {
+            line-height: 43px;
+            border: 1px solid #eaeaea;
+            background-color: #ffffff;
+            padding: 0 15px;
+            width: 70%;
+        }
+
+        #messageRegistr,
+        #messageLogin
+         {
+            font-weight: bold;
+            outline: none;
+        }
+    }
+
+    .validForm {
+        outline: 1px solid green;
+        color: green;
+    }
+
+    .invalidForm {
+        outline: 1px solid red;
+        color: red;
+    }
+
+    details h5 {
+        line-height: 70px;
+        margin: 0;
+    }
+
+    details summary::-webkit-details-marker {
+        display: none;
+    }
+}
+
+@media (max-width: 630px) {
+    .register section {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 630px) {
+
+    .register section section .data-1,
+    .register section section .data-2 {
+        margin: 15px;
+    }
+
+    .register section section input[type='submit'] {
+        margin: 15px;
+    }
+}
+
+@media (max-width: 1142px) {
+    .register {
+        padding: 0 10px;
+        width: auto;
+    }
+}

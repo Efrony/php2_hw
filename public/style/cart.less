@@ -1,0 +1,239 @@
+
+.cart_page {
+    margin: 0 auto;
+    width: 1142px;
+}
+
+.cart {
+    padding-top: 90px;
+
+    div:nth-child(n+2),
+    .productCart div:nth-child(n+2) {
+        text-align: center;
+    }
+
+    .hat {
+        display: grid;
+        grid-template-columns: 7fr 3fr 3fr 2fr 2fr 1fr;
+        padding-bottom: 15px;
+        color: #222222;
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 20px;
+        text-transform: uppercase;
+        letter-spacing: -0.2px;
+        border-bottom: 1px solid #eaeaea;
+    }
+
+    .productItem {
+        display: grid;
+        grid-template-columns: 7fr 3fr 3fr 2fr 2fr 1fr;
+
+        div {
+            border-bottom: 1px solid #eaeaea;
+        }
+    }
+
+    figure {
+        padding: 25px 0 25px 0;
+        border-bottom: 1px solid #eaeaea;
+        text-align: left;
+
+        img {
+            height: 115px;
+        }
+
+        a {
+            float: left;
+        }
+
+        p {
+            padding-top: 33px;
+        }
+
+        figcaption {
+            padding: 10px 0 0 121px;
+        }
+    }
+
+    .unitePrice {
+        color: #656565;
+        font-size: 13px;
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .quantity {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        input {
+            width: 54px;
+            height: 30px;
+            border: 1px solid #eaeaea;
+            background-color: #ffffff;
+            text-align: center;
+            color: #656565;
+            font-size: 13px;
+            font-weight: 400;
+            line-height: 30px;
+            margin: 0 auto;
+        }
+    }
+
+    .shipping {
+        .unitePrice
+    }
+
+    .subtotal {
+        .unitePrice
+    }
+
+    .action {
+        .unitePrice;
+
+        img {
+            cursor: pointer;
+        }
+    }
+}
+
+.buttonCart {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 42px;
+
+    a {
+        text-decoration: none;
+
+        &:hover div {
+            background-color: #f16d7f;
+            color: #fff;
+        }
+    }
+
+    div {
+        border: 1px solid #eaeaea;
+        background-color: #fff;
+        color: #4a4a4a;
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        padding: 17px 37px;
+    }
+}
+
+.inputBlock {
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 63px;
+
+    div {
+        -webkit-flex-basis: 355px;
+        flex-basis: 355px;
+    }
+
+    .shippingAdress,
+    .couponDiscount {
+        display: flex;
+        flex-direction: column;
+
+        .columnButton {
+            color: #4a4a4a;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            align-self: baseline;
+
+            &:hover {
+                background-color: #f16d7f;
+                color: #fff;
+            }
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        span {
+            color: #222222;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        p {
+            margin-top: 28px;
+        }
+    }
+
+    input {
+        padding: 10px 13px;
+        border: 1px solid #eaeaea;
+        background-color: #fff;
+
+        &:nth-child(n+1) {
+            margin-top: 21px;
+        }
+    }
+
+    .grandTotal {
+        background-color: #f5f3f3;
+        height: 210px;
+        padding: 42px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .price {
+            text-align: right;
+            color: #4a4a4a;
+            font-size: 11px;
+            font-weight: 400;
+            text-transform: uppercase;
+            border-bottom: 1px solid #e2e2e2;
+            flex-basis: 61px;
+
+            p {
+                color: #222222;
+                font-size: 16px;
+                font-weight: 700;
+                text-transform: uppercase;
+                margin-top: 10px;
+            }
+
+            span {
+                font-size: 16px;
+                font-weight: 700;
+                text-transform: uppercase;
+                color: #f16d7f;
+            }
+        }
+
+        #sendOrder {
+            display: block;
+            text-decoration: none;
+            width: 100%;
+            padding: 17px 0;
+            background-color: #f16d7f;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-align: center;
+            cursor: pointer;
+            &:hover {
+                color: #f16d7f;
+                background-color: #fff;
+                outline: 1px solid #f16d7f;
+            }
+        }
+    }
+}
+.invalidForm {
+    color: red;
+}

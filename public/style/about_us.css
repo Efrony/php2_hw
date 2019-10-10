@@ -1,0 +1,205 @@
+.about_us_page {
+  position: relative;
+  width: 1142px;
+  margin: 0 auto;
+}
+.about_us_page .bcgBlock {
+  position: absolute;
+  height: 777px;
+  width: 100%;
+  background-color: #f7f7f7;
+  z-index: -1;
+}
+.about_us_page .content {
+  width: 1142px;
+  margin: 0 auto;
+}
+@media (max-width: 1142px) {
+  .about_us_page .content {
+    width: auto;
+  }
+}
+.about_us_page .content .contentBcg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.about_us_page .content .contentBcg aside {
+  background: #fff;
+  border: 1px solid #eaeaea;
+}
+@media (max-width: 1142px) {
+  .about_us_page .content .contentBcg img[alt="fotoGirl"] {
+    width: 100%;
+  }
+}
+
+.infoOrder {
+  display: flex;
+  justify-content: space-between;
+}
+
+.infoOrder div {
+  margin-right: 15px;
+}
+
+.comments {
+  padding: 50px 50px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  width: 1140px;
+}
+@media (max-width: 1142px) {
+  .comments {
+    padding: 10px;
+  }
+}
+.comments .comment {
+  margin-top: 20px;
+  background: url(../img/foto_comment.png) no-repeat;
+  padding: 10px 70px 30px 111px;
+  color: #222224;
+  font-size: 16px;
+  font-style: italic;
+  line-height: 26px;
+  letter-spacing: 0.4px;
+  width: 100%;
+}
+.comments .comment address {
+  color: #f16d7f;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  line-height: 26px;
+  font-style: normal;
+}
+.comments .comment address p {
+  color: #222224;
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0.3px;
+  line-height: 14px;
+}
+.comments .comment .buttons {
+  display: flex;
+  justify-content: space-around;
+}
+.comments .comment button,
+.comments .comment a {
+  padding: 0px 20px;
+  text-decoration: none !important;
+  display: block;
+  color: #ef5b70;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 3px;
+  border: 1px solid #ef5b70;
+  padding: 5px 25px;
+  margin-right: 10px;
+  line-height: 20px;
+  font-style: normal;
+  cursor: pointer;
+}
+.comments .comment button:hover,
+.comments .comment a:hover {
+  background-color: #ef5b70;
+  color: #fff;
+}
+.comments .collection {
+  color: #f16d7f;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 24px;
+  text-transform: uppercase;
+}
+.comments img {
+  margin: 16px;
+}
+.comments .heading {
+  color: #4d4d4d;
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 24px;
+  text-transform: uppercase;
+}
+section {
+  width: 1140px;
+  margin: 0 auto;
+  display: flex;
+  border-bottom: 1px solid #eaeaea;
+}
+section .data-1 {
+  flex-grow: 4;
+  padding-left: 25px;
+}
+section .data-1 input[type='submit'] {
+  margin-top: 10px;
+}
+section .data-2 {
+  flex-grow: 5;
+}
+section h5 {
+  margin: 0 0 33px -25px;
+  color: #222222;
+  font-size: 16px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+section .point {
+  color: #222222;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 27px 0 8px 0;
+}
+section .point input {
+  margin-bottom: 10px;
+}
+section .about {
+  color: #b3b2b2;
+  font-size: 13px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+section .aboutLast {
+  margin-top: -15px;
+}
+section .red {
+  color: #ff0d0d;
+  font-size: 13px;
+  font-weight: 400;
+}
+section .inp {
+  margin-top: 20px;
+}
+section input[type='submit'] {
+  margin: 30px 0 75px 0;
+  border: 1px solid #eaeaea;
+  background-color: #ffffff;
+  padding: 16px 50px;
+  color: #4a4a4a;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+section input[type='submit']:hover {
+  background-color: #f16d7f;
+  color: #fff;
+}
+section input[type='text'],
+section input[type='email'],
+section input[type='password'] {
+  line-height: 43px;
+  border: 1px solid #eaeaea;
+  background-color: #ffffff;
+  padding: 0 15px;
+  width: 70%;
+}
+section .areaComment {
+  border: 1px solid #eaeaea;
+  background-color: #ffffff;
+  padding: 0 15px;
+  width: 70%;
+}

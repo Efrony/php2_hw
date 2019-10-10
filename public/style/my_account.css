@@ -1,0 +1,148 @@
+.register {
+  margin: 0 auto;
+  width: 1142px;
+}
+.register .welcome {
+  padding: 50px 50px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  width: 1140px;
+}
+.register .welcome .collection {
+  color: #f16d7f;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 24px;
+  text-transform: uppercase;
+}
+.register .welcome img {
+  margin: 16px;
+}
+.register .welcome .heading {
+  color: #4d4d4d;
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 24px;
+  text-transform: uppercase;
+}
+.register section {
+  display: flex;
+  border-bottom: 1px solid #eaeaea;
+}
+.register section > div {
+  display: flex;
+  width: 100%;
+}
+.register section .data-1 {
+  width: 100%;
+  padding-left: 25px;
+  margin-top: 85px;
+}
+.register section .data-1 input[type='submit'] {
+  margin-top: 10px;
+}
+.register section .data-2 {
+  width: 100%;
+  margin-top: 110px;
+}
+.register section h5 {
+  margin: 0 0 33px -25px;
+  color: #222222;
+  font-size: 16px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+.register section .point {
+  color: #222222;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 27px 0 8px 0;
+}
+.register section .point input {
+  margin-bottom: 10px;
+}
+.register section .about {
+  color: #b3b2b2;
+  font-size: 13px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+.register section .aboutLast {
+  margin-top: -15px;
+}
+.register section .red {
+  color: #ff0d0d;
+  font-size: 13px;
+  font-weight: 400;
+}
+.register section .inp {
+  margin-top: 20px;
+}
+.register section input[type='submit'] {
+  margin: 30px 0 75px 0;
+  border: 1px solid #eaeaea;
+  background-color: #ffffff;
+  padding: 16px 50px;
+  color: #4a4a4a;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.register section input[type='submit']:hover {
+  background-color: #f16d7f;
+  color: #fff;
+}
+.register section input[type='text'],
+.register section input[type='email'],
+.register section input[type='password'] {
+  line-height: 43px;
+  border: 1px solid #eaeaea;
+  background-color: #ffffff;
+  padding: 0 15px;
+  width: 70%;
+}
+.register section #messageRegistr,
+.register section #messageLogin {
+  font-weight: bold;
+  outline: none;
+}
+.register .validForm {
+  outline: 1px solid green;
+  color: green;
+}
+.register .invalidForm {
+  outline: 1px solid red;
+  color: red;
+}
+.register details h5 {
+  line-height: 70px;
+  margin: 0;
+}
+.register details summary::-webkit-details-marker {
+  display: none;
+}
+@media (max-width: 630px) {
+  .register section {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media (max-width: 630px) {
+  .register section section .data-1,
+  .register section section .data-2 {
+    margin: 15px;
+  }
+  .register section section input[type='submit'] {
+    margin: 15px;
+  }
+}
+@media (max-width: 1142px) {
+  .register {
+    padding: 0 10px;
+    width: auto;
+  }
+}

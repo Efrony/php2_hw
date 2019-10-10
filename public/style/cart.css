@@ -1,0 +1,223 @@
+.cart_page {
+  margin: 0 auto;
+  width: 1142px;
+}
+.cart {
+  padding-top: 90px;
+}
+.cart div:nth-child(n+2),
+.cart .productCart div:nth-child(n+2) {
+  text-align: center;
+}
+.cart .hat {
+  display: grid;
+  grid-template-columns: 7fr 3fr 3fr 2fr 2fr 1fr;
+  padding-bottom: 15px;
+  color: #222222;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 20px;
+  text-transform: uppercase;
+  letter-spacing: -0.2px;
+  border-bottom: 1px solid #eaeaea;
+}
+.cart .productItem {
+  display: grid;
+  grid-template-columns: 7fr 3fr 3fr 2fr 2fr 1fr;
+}
+.cart .productItem div {
+  border-bottom: 1px solid #eaeaea;
+}
+.cart figure {
+  padding: 25px 0 25px 0;
+  border-bottom: 1px solid #eaeaea;
+  text-align: left;
+}
+.cart figure img {
+  height: 115px;
+}
+.cart figure a {
+  float: left;
+}
+.cart figure p {
+  padding-top: 33px;
+}
+.cart figure figcaption {
+  padding: 10px 0 0 121px;
+}
+.cart .unitePrice {
+  color: #656565;
+  font-size: 13px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cart .quantity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cart .quantity input {
+  width: 54px;
+  height: 30px;
+  border: 1px solid #eaeaea;
+  background-color: #ffffff;
+  text-align: center;
+  color: #656565;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 30px;
+  margin: 0 auto;
+}
+.cart .shipping {
+  color: #656565;
+  font-size: 13px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cart .subtotal {
+  color: #656565;
+  font-size: 13px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cart .action {
+  color: #656565;
+  font-size: 13px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cart .action img {
+  cursor: pointer;
+}
+.buttonCart {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 42px;
+}
+.buttonCart a {
+  text-decoration: none;
+}
+.buttonCart a:hover div {
+  background-color: #f16d7f;
+  color: #fff;
+}
+.buttonCart div {
+  border: 1px solid #eaeaea;
+  background-color: #fff;
+  color: #4a4a4a;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 17px 37px;
+}
+.inputBlock {
+  display: -webkit-flex;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 63px;
+}
+.inputBlock div {
+  -webkit-flex-basis: 355px;
+  flex-basis: 355px;
+}
+.inputBlock .shippingAdress,
+.inputBlock .couponDiscount {
+  display: flex;
+  flex-direction: column;
+}
+.inputBlock .shippingAdress .columnButton,
+.inputBlock .couponDiscount .columnButton {
+  color: #4a4a4a;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  align-self: baseline;
+}
+.inputBlock .shippingAdress .columnButton:hover,
+.inputBlock .couponDiscount .columnButton:hover {
+  background-color: #f16d7f;
+  color: #fff;
+}
+.inputBlock .shippingAdress .column,
+.inputBlock .couponDiscount .column {
+  display: flex;
+  flex-direction: column;
+}
+.inputBlock .shippingAdress span,
+.inputBlock .couponDiscount span {
+  color: #222222;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.inputBlock .shippingAdress p,
+.inputBlock .couponDiscount p {
+  margin-top: 28px;
+}
+.inputBlock input {
+  padding: 10px 13px;
+  border: 1px solid #eaeaea;
+  background-color: #fff;
+}
+.inputBlock input:nth-child(n+1) {
+  margin-top: 21px;
+}
+.inputBlock .grandTotal {
+  background-color: #f5f3f3;
+  height: 210px;
+  padding: 42px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.inputBlock .grandTotal .price {
+  text-align: right;
+  color: #4a4a4a;
+  font-size: 11px;
+  font-weight: 400;
+  text-transform: uppercase;
+  border-bottom: 1px solid #e2e2e2;
+  flex-basis: 61px;
+}
+.inputBlock .grandTotal .price p {
+  color: #222222;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+.inputBlock .grandTotal .price span {
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #f16d7f;
+}
+.inputBlock .grandTotal #sendOrder {
+  display: block;
+  text-decoration: none;
+  width: 100%;
+  padding: 17px 0;
+  background-color: #f16d7f;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+}
+.inputBlock .grandTotal #sendOrder:hover {
+  color: #f16d7f;
+  background-color: #fff;
+  outline: 1px solid #f16d7f;
+}
+.invalidForm {
+  color: red;
+}

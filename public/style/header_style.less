@@ -1,0 +1,186 @@
+@pink-color: #ef5b70;
+
+header {
+    margin: 0 auto;
+    width: 1142px;
+    height: 116px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @media (max-width: 1142px) {
+        width: auto;
+        padding: 0 10px 15px 10px;
+    }
+
+    @media (max-width: 820px) {
+        flex-wrap: wrap;
+        justify-content: center;
+        height: auto;
+        margin-top: 10px;
+    }
+
+    .logoSearch {
+        display: flex;
+        align-items: center;
+
+        @media (max-width: 631px) {
+            flex-wrap: wrap;
+            justify-content: center;
+            padding-top: 10px;
+        }
+    }
+
+    .search {
+        display: flex;
+        margin-left: 37px;
+
+        @media (max-width: 631px) {
+            margin-top: 10px;
+            margin-left: 0;
+        }
+
+        .browse {
+            padding: 10px 14px;
+            border-radius: 3px 0 0 3px;
+            border: 1px solid #e6e6e6;
+            background-color: #cdcdcc;
+            background-image: linear-gradient(to bottom, #f9f9f9 0%, #f5f5f5 100%);
+            color: #222222;
+            font-size: 14px;
+            font-weight: 300;
+
+            i {
+                color: #838383;
+                letter-spacing: 0.35px;
+            }
+        }
+
+        input[type="search"] {
+            width: 279px;
+            border: 1px solid #e6e6e6;
+            background-color: #fff;
+            color: #a4a4a4;
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 32px;
+            margin-left: -1px;
+            padding: 0 14px;
+
+            @media (max-width: 631px) {
+                width: 50%;
+            }
+        }
+
+        .searchButton {
+            border-radius: 0 3px 3px 0;
+            background-color: #fff;
+            border: 1px solid #e6e6e6;
+            color: #a4a4a4;
+            font-size: 14px;
+            font-weight: 400;
+            width: 38px;
+            margin-left: -1px;
+            cursor: pointer;
+        }
+    }
+
+    .my {
+        display: flex;
+        align-items: flex-end;
+
+        @media (max-width: 631px) {
+            margin-top: 10px;
+        }
+
+        .authEmail {
+            margin-right: 20px;
+            text-decoration: none;
+            color: @pink-color;
+            font-weight: bold;
+            line-height: 29px;
+        }
+
+        .cartButton {
+            margin-right: 25px;
+            height: 29px;
+            position: relative;
+            text-decoration: none;
+
+            .cartCount {
+                position: absolute;
+                border-radius: 50%;
+                border-color: #ef5b70;
+                background-color: #ef5b70;
+                padding: 1px 5px;
+                font-size: 13px;
+                color: #fff;
+                font-weight: bold;
+                top: -10px;
+                right: -10px;
+            }
+        }
+
+
+        .myAccount {
+            margin-left: 5px;
+
+        }
+
+        .myAccount a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 400;
+        }
+
+        .myAccount,
+        .myAccountExit {
+            padding: 10px 19px;
+            background-color: #f16d7f;
+            position: relative;
+            border: none;
+            cursor: pointer;
+
+            &:hover .myAccountExit {
+                display: block;
+            }
+
+            i {
+                font-size: 14px;
+            }
+        }
+
+        .myAccountExit {
+            display: none;
+            position: absolute;
+            bottom: -38px;
+            left: 0;
+            width: 100%;
+            text-align: right;
+        }
+    }
+
+    .logo {
+        background-image: url(../img/Group_2.png);
+        background-repeat: no-repeat;
+        padding-left: 72px;
+        height: 51px;
+
+        .styleBran {
+            color: #222222;
+            font-size: 27px;
+            font-weight: 300;
+            line-height: 58px;
+            letter-spacing: 0.68px;
+        }
+
+        .styleD {
+            color: #f16d7f;
+            font-weight: 900;
+            letter-spacing: 0.68px;
+            font-size: 27px;
+            line-height: 58px;
+        }
+    }
+}
